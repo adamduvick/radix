@@ -4041,6 +4041,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "radix-leptos-checkbox"
+version = "0.0.2"
+dependencies = [
+ "leptos",
+ "leptos-node-ref",
+ "radix-leptos-compose-refs",
+ "radix-leptos-presence",
+ "radix-leptos-primitive",
+ "radix-leptos-use-controllable-state",
+ "radix-leptos-use-previous",
+ "radix-leptos-use-size",
+ "send_wrapper",
+ "web-sys",
+]
+
+[[package]]
 name = "radix-leptos-collapsible"
 version = "0.0.2"
 dependencies = [
@@ -4360,6 +4376,7 @@ dependencies = [
  "log",
  "radix-leptos-accordion",
  "radix-leptos-alert-dialog",
+ "radix-leptos-checkbox",
  "radix-leptos-collapsible",
  "radix-leptos-dialog",
  "radix-leptos-form",
@@ -4372,6 +4389,7 @@ dependencies = [
  "radix-leptos-scroll-area",
  "radix-leptos-separator",
  "radix-leptos-slider",
+ "radix-leptos-switch",
  "radix-leptos-tabs",
  "radix-leptos-toggle",
  "radix-leptos-toggle-group",
@@ -4485,6 +4503,20 @@ dependencies = [
  "stylance",
  "tailwind_fuse",
  "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
+name = "radix-leptos-switch"
+version = "0.0.2"
+dependencies = [
+ "leptos",
+ "leptos-node-ref",
+ "radix-leptos-compose-refs",
+ "radix-leptos-primitive",
+ "radix-leptos-use-controllable-state",
+ "radix-leptos-use-previous",
+ "radix-leptos-use-size",
  "web-sys",
 ]
 

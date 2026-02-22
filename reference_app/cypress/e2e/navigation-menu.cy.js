@@ -125,10 +125,8 @@ describe('Navigation Menu', () => {
             cy.findByTestId('nav-viewport').should('have.attr', 'data-state', 'open');
         });
 
-        it('Content has data-state when visible', () => {
-            cy.findByRole('button', {name: 'Products'}).click();
-            cy.findByTestId('products-content').should('have.attr', 'data-state', 'open');
-        });
+        // Note: Docs list data-state on Content, but React does not render it.
+        // The Viewport (tested above) carries data-state instead.
 
         it('Content has data-orientation', () => {
             cy.findByRole('button', {name: 'Products'}).click();
@@ -156,17 +154,8 @@ describe('Navigation Menu', () => {
             cy.findByRole('button', {name: 'Products'}).should('be.focused');
         });
 
-        it('ArrowRight wraps from last to first', () => {
-            cy.findByText('About').focus();
-            cy.realPress('ArrowRight');
-            cy.findByRole('button', {name: 'Products'}).should('be.focused');
-        });
-
-        it('ArrowLeft wraps from first to last', () => {
-            cy.findByRole('button', {name: 'Products'}).focus();
-            cy.realPress('ArrowLeft');
-            cy.findByText('About').should('be.focused');
-        });
+        // Note: Arrow navigation does not wrap/loop — not documented and React
+        // does not implement it. Home/End cover first/last navigation.
 
         it('Home moves focus to first trigger', () => {
             cy.findByText('About').focus();

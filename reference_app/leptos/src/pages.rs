@@ -1,5 +1,6 @@
 pub mod accordion;
 pub mod alert_dialog;
+pub mod checkbox;
 pub mod collapsible;
 pub mod dialog;
 pub mod form;
@@ -11,6 +12,7 @@ pub mod radio_group;
 pub mod scroll_area;
 pub mod separator;
 pub mod slider;
+pub mod switch;
 pub mod tabs;
 pub mod toggle;
 pub mod toggle_group;

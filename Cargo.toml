@@ -21,6 +21,7 @@ members = [
     "packages/primitives/leptos/announce",
     "packages/primitives/leptos/arrow",
     "packages/primitives/leptos/aspect-ratio",
+    "packages/primitives/leptos/checkbox",
     "packages/primitives/leptos/collapsible",
     "packages/primitives/leptos/collection",
     "packages/primitives/leptos/dialog",
@@ -47,6 +48,7 @@ members = [
     "packages/primitives/leptos/scroll-area",
     "packages/primitives/leptos/separator",
     "packages/primitives/leptos/slider",
+    "packages/primitives/leptos/switch",
     "packages/primitives/leptos/tabs",
     "packages/primitives/leptos/toggle",
     "packages/primitives/leptos/toggle-group",
@@ -92,6 +94,7 @@ radix-leptos-announce = { path = "./packages/primitives/leptos/announce", versio
 radix-leptos-arrow = { path = "./packages/primitives/leptos/arrow", version = "0.0.2" }
 radix-leptos-aspect-ratio = { path = "./packages/primitives/leptos/aspect-ratio", version = "0.0.2" }
 radix-leptos-collection = { path = "./packages/primitives/leptos/collection", version = "0.0.2" }
+radix-leptos-checkbox = { path = "./packages/primitives/leptos/checkbox", version = "0.0.2" }
 radix-leptos-collapsible = { path = "./packages/primitives/leptos/collapsible", version = "0.0.2" }
 radix-leptos-compose-refs = { path = "./packages/primitives/leptos/compose-refs", version = "0.0.2" }
 radix-leptos-dialog = { path = "./packages/primitives/leptos/dialog", version = "0.0.2" }
@@ -118,6 +121,7 @@ radix-leptos-scroll-area = { path = "./packages/primitives/leptos/scroll-area", 
 radix-leptos-roving-focus = { path = "./packages/primitives/leptos/roving-focus", version = "0.0.2" }
 radix-leptos-separator = { path = "./packages/primitives/leptos/separator", version = "0.0.2" }
 radix-leptos-slider = { path = "./packages/primitives/leptos/slider", version = "0.0.2" }
+radix-leptos-switch = { path = "./packages/primitives/leptos/switch", version = "0.0.2" }
 radix-leptos-tabs = { path = "./packages/primitives/leptos/tabs", version = "0.0.2" }
 radix-leptos-toggle = { path = "./packages/primitives/leptos/toggle", version = "0.0.2" }
 radix-leptos-toggle-group = { path = "./packages/primitives/leptos/toggle-group", version = "0.0.2" }

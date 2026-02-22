@@ -460,6 +460,30 @@ pub fn PopperContent(
             let _ = inner_style.set_property(prop, value);
             let _ = wrapper_style.remove_property(prop);
         }
+
+        // Transfer non-internal attributes (e.g., data-testid, aria-*) from wrapper to inner.
+        // In React, all user props spread onto the inner Primitive via {...contentProps}. In
+        // Leptos, user attrs from add_any_attr bypass the AttributeInterceptor and land on
+        // the wrapper div. Transfer them to the inner element to match React's behavior.
+        let attrs = wrapper.attributes();
+        let mut attrs_to_transfer: Vec<(String, String)> = Vec::new();
+        for i in 0..attrs.length() {
+            if let Some(attr) = attrs.item(i) {
+                let name = attr.name();
+                // Skip internal wrapper attributes
+                if matches!(
+                    name.as_str(),
+                    "data-radix-popper-content-wrapper" | "dir" | "style" | "class"
+                ) {
+                    continue;
+                }
+                attrs_to_transfer.push((name, attr.value()));
+            }
+        }
+        for (name, value) in &attrs_to_transfer {
+            inner.set_attribute(name, value).ok();
+            wrapper.remove_attribute(name).ok();
+        }
     });
 
     view! {

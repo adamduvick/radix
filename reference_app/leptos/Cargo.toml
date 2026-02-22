@@ -35,4 +35,5 @@ radix-leptos-tabs.workspace = true
 radix-leptos-toggle.workspace = true
 radix-leptos-toggle-group.workspace = true
 radix-leptos-toolbar.workspace = true
+radix-leptos-tooltip.workspace = true
 web-sys.workspace = true

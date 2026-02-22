@@ -38,6 +38,7 @@ pub fn App() -> impl IntoView {
                     <Route path=path!("/toggle") view=pages::toggle::TogglePage />
                     <Route path=path!("/toggle-group") view=pages::toggle_group::ToggleGroupPage />
                     <Route path=path!("/toolbar") view=pages::toolbar::ToolbarPage />
+                    <Route path=path!("/tooltip") view=pages::tooltip::TooltipPage />
                 </Routes>
             </main>
         </Router>

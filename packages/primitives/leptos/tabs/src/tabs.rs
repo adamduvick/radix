@@ -181,38 +181,35 @@ pub fn TabsTrigger(
     // on:focus listener is registered on the DOM element, avoiding duplicate event
     // handler closures that can lead to WASM "closure invoked after being dropped"
     // panics when multiple focus listeners interact with the reactive system.
-    let composed_on_focus: Callback<ev::FocusEvent> = Callback::new(
-        compose_callbacks(
-            on_focus,
-            Some(Callback::new(move |_: ev::FocusEvent| {
-                // Handle "automatic" activation if necessary:
-                // activate tab following focus.
-                let is_automatic_activation =
-                    context.activation_mode.get() != ActivationMode::Manual;
-                if !is_selected.get() && !disabled.get() && is_automatic_activation {
-                    // Defer the value change to a macrotask (setTimeout 0) to avoid
-                    // re-entrant signal updates in WASM. In React, setState is batched;
-                    // in Leptos, signal updates are synchronous. When RovingFocusGroup's
-                    // keydown handler calls focus_first() which triggers this focus handler,
-                    // the synchronous signal update can cause reactive effects while the
-                    // keydown closure is still on the call stack.
-                    let on_value_change = context.on_value_change;
-                    let value = trigger_value.get_value();
-                    let window = web_sys::window().expect("Window should exist.");
-                    window
-                        .set_timeout_with_callback_and_timeout_and_arguments_0(
-                            &Closure::once_into_js(move || {
-                                on_value_change.run(value);
-                            })
-                            .unchecked_ref(),
-                            0,
-                        )
-                        .expect("setTimeout should succeed.");
-                }
-            })),
-            None,
-        ),
-    );
+    let composed_on_focus: Callback<ev::FocusEvent> = Callback::new(compose_callbacks(
+        on_focus,
+        Some(Callback::new(move |_: ev::FocusEvent| {
+            // Handle "automatic" activation if necessary:
+            // activate tab following focus.
+            let is_automatic_activation = context.activation_mode.get() != ActivationMode::Manual;
+            if !is_selected.get() && !disabled.get() && is_automatic_activation {
+                // Defer the value change to a macrotask (setTimeout 0) to avoid
+                // re-entrant signal updates in WASM. In React, setState is batched;
+                // in Leptos, signal updates are synchronous. When RovingFocusGroup's
+                // keydown handler calls focus_first() which triggers this focus handler,
+                // the synchronous signal update can cause reactive effects while the
+                // keydown closure is still on the call stack.
+                let on_value_change = context.on_value_change;
+                let value = trigger_value.get_value();
+                let window = web_sys::window().expect("Window should exist.");
+                window
+                    .set_timeout_with_callback_and_timeout_and_arguments_0(
+                        &Closure::once_into_js(move || {
+                            on_value_change.run(value);
+                        })
+                        .unchecked_ref(),
+                        0,
+                    )
+                    .expect("setTimeout should succeed.");
+            }
+        })),
+        None,
+    ));
 
     view! {
         <RovingFocusGroupItem

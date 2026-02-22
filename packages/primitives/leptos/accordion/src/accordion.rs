@@ -433,9 +433,7 @@ pub fn AccordionItem(
 
     let item_value = StoredValue::new(value);
     let item_value_str = item_value.get_value();
-    let open = Signal::derive(move || {
-        value_context.value.get().contains(&item_value_str)
-    });
+    let open = Signal::derive(move || value_context.value.get().contains(&item_value_str));
     let disabled =
         Signal::derive(move || accordion_context.disabled.get() || disabled.get().unwrap_or(false));
 

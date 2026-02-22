@@ -264,6 +264,98 @@
 }
 
 
+.root-d65 {
+  /* better default alignment */
+  vertical-align: middle;
+  /* ------ */
+  border: 1px solid var(--gray-4);
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--red-9);
+    box-shadow: 0 0 0 1px var(--red-9);
+  }
+
+  &[data-disabled] {
+    opacity: 0.3;
+  }
+}
+
+.indicator-d65 {
+  background-color: var(--red-9);
+  display: block;
+  width: 20px;
+  height: 4px;
+  &[data-state='checked'],
+  &[data-state='unchecked'] {
+    height: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animatedIndicator-d65 {
+  transition: height 300ms;
+  &[data-state='checked'] {
+    animation: fadeIn 1000ms ease-out;
+  }
+  &[data-state='unchecked'] {
+    animation: fadeOut 1000ms ease-in;
+  }
+}
+
+.rootAttr-d65,
+.indicatorAttr-d65 {
+  background-color: var(--blue-a12);
+  border: 2px solid var(--blue-9);
+  padding: 10px;
+  &[data-state='unchecked'] {
+    border-color: var(--red-9);
+  }
+  &[data-state='checked'] {
+    border-color: var(--green-9);
+  }
+  &[data-state='indeterminate'] {
+    border-color: var(--purple-9);
+  }
+  &[data-disabled] {
+    border-style: dashed;
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.label-d65 {
+  /* ensures it can receive vertical margins */
+  display: inline-block;
+  /* better default alignment */
+  vertical-align: middle;
+  /* mimics default `label` tag (as we render a `span`) */
+  cursor: default;
+  display: inline-block;
+}
+
+
 .root-a9a {
   max-width: 20em;
   font-family: sans-serif;
@@ -1902,6 +1994,93 @@
 }
 
 
+.root-b87,
+:root {
+  --_switch-width: 50px;
+  --_switch-thumb-width: 20px;
+  --_switch-gap: 4px;
+}
+
+.root-b87 {
+  /* better default alignment */
+  vertical-align: middle;
+  /* ensures thumb is not horizontally centered (default in `button`) */
+  text-align: left;
+  /* ------ */
+  outline: none;
+  border: none;
+  width: var(--_switch-width);
+  padding: var(--_switch-gap);
+  border-radius: 9999px;
+  background-color: var(--color-gray300);
+  transition: background-color 166ms ease-out;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-black);
+  }
+
+  &[data-state='checked'] {
+    background-color: var(--color-red);
+    border-color: var(--color-red);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+
+.thumb-b87 {
+  /* ensures thumb is sizeable/can receive vertical margins */
+  display: inline-block;
+  /* ensures thumb is vertically centered */
+  vertical-align: middle;
+  /* ------ */
+  width: var(--_switch-thumb-width);
+  height: var(--_switch-thumb-width);
+  background-color: var(--color-white);
+  border-radius: 9999px;
+  transition: transform 166ms ease-out;
+  &[data-state='checked'] {
+    transform: translateX(
+      calc(var(--_switch-width) - var(--_switch-gap) * 2 - var(--_switch-thumb-width))
+    );
+  }
+}
+
+.rootAttr-b87,
+.thumbAttr-b87 {
+  background-color: rgba(0, 0, 255, 0.3);
+  border: 2px solid blue;
+  padding: 10px;
+  &[data-state='unchecked'] {
+    border-color: red;
+  }
+  &[data-state='checked'] {
+    border-color: green;
+  }
+  &[data-state='indeterminate'] {
+    border-color: purple;
+  }
+  &[data-disabled] {
+    border-style: dashed;
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.label-b87 {
+  /* ensures it can receive vertical margins */
+  display: inline-block;
+  /* better default alignment */
+  vertical-align: middle;
+  /* mimics default `label` tag (as we render a `span`) */
+  cursor: default;
+  display: inline-block;
+}
+
+
 .root-dff {
   /* ensures things are layed out correctly by default */
   display: flex;
@@ -2289,5 +2468,105 @@
   }
   &[data-state='unchecked'] {
     animation: menu-animateOut 300ms ease;
+  }
+}
+
+
+.positionButton-d83 {
+  margin: 5px;
+  border: 1px solid black;
+  background: transparent;
+}
+
+.trigger-d83 {
+}
+
+.content-d83 {
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+  /* ensures content isn't selectable */
+  /* this is a detterent to people putting interactive content inside a `Tooltip.Root` */
+  user-select: none;
+  /* ---- */
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 300px;
+}
+
+.arrow-d83 {
+  fill: black;
+}
+
+.animatedContent-d83 {
+  &[data-state='delayed-open'] {
+    animation: tooltip-scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  &[data-state='instant-open'] {
+    animation: tooltip-fadeIn 0.2s ease-out;
+  }
+  &[data-state='closed'] {
+    animation: tooltip-fadeOut 0.2s ease-out;
+  }
+}
+
+.grid-d83 {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 50px);
+  column-gap: 150px;
+  row-gap: 100px;
+  padding: 100px;
+  border: 1px solid black;
+}
+
+.chromaticTrigger-d83 {
+  width: 30px;
+  height: 30px;
+  background-color: tomato;
+  border: 1px solid rgb(0 0 0 / 0.3);
+}
+
+.chromaticContent-d83 {
+  display: grid;
+  place-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: royalblue;
+  color: white;
+  font-size: 10px;
+  border: 1px solid rgb(0 0 0 / 0.3);
+}
+
+.chromaticArrow-d83 {
+  fill: black;
+}
+
+@keyframes tooltip-scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes tooltip-fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tooltip-fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

@@ -718,7 +718,7 @@ pub fn NavigationMenuItem(
     let restore_content_tab_order: StoredValue<TabOrderBackup> = StoredValue::new(None);
 
     let handle_content_entry = Callback::new(move |side: &'static str| {
-        if let Some(el) = content_ref.get() {
+        if let Some(el) = content_ref.get_untracked() {
             let el: web_sys::HtmlElement = el.unchecked_into();
             // Restore tab order first
             restore_content_tab_order.with_value(|saved| {
@@ -742,7 +742,7 @@ pub fn NavigationMenuItem(
     });
 
     let handle_content_exit = Callback::new(move |_: ()| {
-        if let Some(el) = content_ref.get() {
+        if let Some(el) = content_ref.get_untracked() {
             let el: web_sys::HtmlElement = el.unchecked_into();
             let candidates = get_tabbable_candidates(&el);
             if !candidates.is_empty() {
@@ -1289,8 +1289,30 @@ pub fn NavigationMenuContent(
             for i in 0..attrs.length() {
                 if let Some(attr) = attrs.item(i) {
                     let name = attr.name();
-                    // Skip the hidden span's own attributes
-                    if matches!(name.as_str(), "style" | "hidden" | "aria-hidden") {
+                    // Skip the hidden span's own structural attributes
+                    if matches!(name.as_str(), "hidden" | "aria-hidden") {
+                        continue;
+                    }
+                    if name == "style" {
+                        // The span has its own style="display:none". Extract only
+                        // the user-contributed style properties (e.g., grid-template-columns,
+                        // width) by stripping the span's "display: none".
+                        let value = attr.value();
+                        let user_style: String = value
+                            .split(';')
+                            .map(|s| s.trim())
+                            .filter(|prop| {
+                                if prop.is_empty() {
+                                    return false;
+                                }
+                                let normalized = prop.to_lowercase().replace(' ', "");
+                                normalized != "display:none"
+                            })
+                            .collect::<Vec<_>>()
+                            .join("; ");
+                        if !user_style.is_empty() {
+                            user_attrs.push(("style".to_string(), user_style));
+                        }
                         continue;
                     }
                     user_attrs.push((name, attr.value()));
@@ -1537,7 +1559,7 @@ fn NavigationMenuContentImpl(
         if let Some(target) = event
             .target()
             .and_then(|t| t.dyn_into::<web_sys::HtmlElement>().ok())
-            && let Some(root) = context.root_navigation_menu.get()
+            && let Some(root) = context.root_navigation_menu.get_untracked()
         {
             let root: web_sys::Node = root.unchecked_into();
             if root.contains(Some(target.unchecked_ref())) {
@@ -1591,7 +1613,7 @@ fn NavigationMenuContentImpl(
                 as_child=true
                 disable_outside_pointer_events=false
                 on_dismiss=Callback::new(move |_| {
-                    if let Some(el) = content_ref.get() {
+                    if let Some(el) = content_ref.get_untracked() {
                         let el: web_sys::HtmlElement = el.unchecked_into();
                         let mut init = web_sys::EventInit::new();
                         init.set_bubbles(true);

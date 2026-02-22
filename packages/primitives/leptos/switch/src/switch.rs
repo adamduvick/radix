@@ -3,8 +3,8 @@ use leptos::{
 };
 use leptos_node_ref::AnyNodeRef;
 use radix_leptos_compose_refs::use_composed_refs;
-use radix_leptos_primitive::{compose_callbacks, Primitive};
-use radix_leptos_use_controllable_state::{use_controllable_state, UseControllableStateParams};
+use radix_leptos_primitive::{Primitive, compose_callbacks};
+use radix_leptos_use_controllable_state::{UseControllableStateParams, use_controllable_state};
 use radix_leptos_use_previous::use_previous;
 use radix_leptos_use_size::use_size;
 use web_sys::wasm_bindgen::JsCast;
@@ -181,7 +181,7 @@ fn BubbleInput(
             required=move || required.get().then_some("")
             disabled=move || disabled.get().then_some("")
             value=move || value.get()
-            tab-index="-1"
+            tabindex="-1"
             // We transform because the input is absolutely positioned, but we have
             // rendered it **after** the button. This pulls it back to sit on top
             // of the button.

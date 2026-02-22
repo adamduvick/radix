@@ -4394,6 +4394,7 @@ dependencies = [
  "radix-leptos-toggle",
  "radix-leptos-toggle-group",
  "radix-leptos-toolbar",
+ "radix-leptos-tooltip",
  "web-sys",
 ]
 
@@ -4471,6 +4472,7 @@ dependencies = [
  "radix-leptos-alert-dialog",
  "radix-leptos-arrow",
  "radix-leptos-aspect-ratio",
+ "radix-leptos-checkbox",
  "radix-leptos-collapsible",
  "radix-leptos-collection",
  "radix-leptos-dialog",
@@ -4494,10 +4496,12 @@ dependencies = [
  "radix-leptos-scroll-area",
  "radix-leptos-separator",
  "radix-leptos-slider",
+ "radix-leptos-switch",
  "radix-leptos-tabs",
  "radix-leptos-toggle",
  "radix-leptos-toggle-group",
  "radix-leptos-toolbar",
+ "radix-leptos-tooltip",
  "radix-leptos-visually-hidden",
  "send_wrapper",
  "stylance",
@@ -4570,6 +4574,27 @@ dependencies = [
  "radix-leptos-roving-focus",
  "radix-leptos-separator",
  "radix-leptos-toggle-group",
+ "web-sys",
+]
+
+[[package]]
+name = "radix-leptos-tooltip"
+version = "0.0.2"
+dependencies = [
+ "js-sys",
+ "leptos",
+ "leptos-node-ref",
+ "radix-leptos-compose-refs",
+ "radix-leptos-dismissable-layer",
+ "radix-leptos-id",
+ "radix-leptos-popper",
+ "radix-leptos-portal",
+ "radix-leptos-presence",
+ "radix-leptos-primitive",
+ "radix-leptos-use-controllable-state",
+ "radix-leptos-visually-hidden",
+ "send_wrapper",
+ "wasm-bindgen",
  "web-sys",
 ]
 

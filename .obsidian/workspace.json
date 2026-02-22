@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/leptos-collection.md",
+                "file": "notes/leptos-navigation-menu.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "leptos-collection"
+              "title": "leptos-navigation-menu"
             }
           }
         ]
@@ -193,29 +193,32 @@
   },
   "active": "8c5a22cb96fe50b9",
   "lastOpenFiles": [
+    "stories/leptos/dist/radix-leptos-stories-f13de93f37f4766a_bg.wasm",
+    "stories/leptos/dist/radix-leptos-stories-f13de93f37f4766a.js",
+    "target/wasm32-unknown-unknown/debug/deps/radix_leptos_stories-b6bc8b4622ac1f61.wasm",
+    "target/wasm32-unknown-unknown/debug/deps/radix_leptos_stories-b6bc8b4622ac1f61.wasm.tmp5b47d1b",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/work-products.bin",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/query-cache.bin",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/f54xe8ljvam3lu4z712zzn6rq.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/f3795x2wq9l4fwy125qf8y5o8.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/f20mwm0ees4jfcy3qxmog51w1.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/f04amk4on6f7kfjfvl8bmhp7s.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/ezf8rtckst6nohl9zhtibw47t.o",
+    "reference_app/notes.md",
+    "notes/leptos-navigation-menu.md",
+    "notes/leptos-accessible-icon.md",
+    "notes/leptos-collection.md",
     "reference_app/cypress/screenshots/toast.cy.js/Toast -- accessibility -- Viewport has a label for screen readers (failed).png",
-    "reference_app/cypress/screenshots/toast.cy.js",
     "reference_app/cypress/screenshots/toast.cy.js/Toast -- accessibility -- Viewport has aria-label (failed).png",
     "reference_app/cypress/screenshots/toast.cy.js/Toast -- accessibility -- Viewport has role=region (failed).png",
-    "reference_app/cypress/e2e/toast.cy.js",
     "reference_app/cypress/screenshots/select.cy.js/Select -- keyboard navigation -- Enter selects and closes (failed).png",
-    "reference_app/cypress/screenshots/select.cy.js",
     "reference_app/cypress/screenshots/select.cy.js/Select -- pointer interaction -- click option selects and closes (failed).png",
     "reference_app/cypress/screenshots/select.cy.js/Select -- keyboard navigation -- Space selects and closes (failed).png",
-    "reference_app/cypress/e2e/select.cy.js",
-    "reference_app/cypress/e2e/context-menu.cy.js",
     "reference_app/cypress/screenshots/dropdown-menu.cy.js/Dropdown Menu -- disabled state -- disabled item cannot be activated (failed).png",
     "reference_app/cypress/screenshots/dropdown-menu.cy.js/Dropdown Menu -- submenu -- Escape closes submenu only (failed).png",
     "reference_app/cypress/screenshots/dropdown-menu.cy.js/Dropdown Menu -- submenu -- ArrowLeft closes submenu (failed).png",
     "reference_app/cypress/screenshots/dropdown-menu.cy.js/Dropdown Menu -- data attributes -- Item has data-highlighted when focused (failed).png",
-    "reference_app/cypress/screenshots/dropdown-menu.cy.js/Dropdown Menu -- data attributes -- Trigger data-state closed→open→closed (failed).png",
-    "reference_app/cypress/screenshots/dropdown-menu.cy.js",
-    "reference_app/cypress/e2e/dropdown-menu.cy.js",
-    "reference_app/cypress/screenshots/tooltip.cy.js",
-    "reference_app/shared/toast.css",
-    "reference_app/shared/select.css",
     "target/doc/static.files/SourceSerif4-LICENSE-a2cfd9d5.md",
-    "reference_app/notes.md",
     "node_modules/lodash/README.md",
     "node_modules/dayjs/README.md",
     "node_modules/dayjs/CHANGELOG.md",
@@ -236,9 +239,6 @@
     "node_modules/qs/README.md",
     "node_modules/qs/LICENSE.md",
     "node_modules/qs/CHANGELOG.md",
-    "node_modules/tough-cookie/README.md",
-    "node_modules/lz-string/README.md",
-    "node_modules/minimist/README.md",
     "Untitled.canvas"
   ]
 }

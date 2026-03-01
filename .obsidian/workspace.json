@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/leptos-navigation-menu.md",
+                "file": "notes/leptos-toolbar.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "leptos-navigation-menu"
+              "title": "leptos-toolbar"
             }
           }
         ]
@@ -193,31 +193,32 @@
   },
   "active": "8c5a22cb96fe50b9",
   "lastOpenFiles": [
-    "stories/leptos/dist/radix-leptos-stories-f13de93f37f4766a_bg.wasm",
-    "stories/leptos/dist/radix-leptos-stories-f13de93f37f4766a.js",
-    "target/wasm32-unknown-unknown/debug/deps/radix_leptos_stories-b6bc8b4622ac1f61.wasm",
-    "target/wasm32-unknown-unknown/debug/deps/radix_leptos_stories-b6bc8b4622ac1f61.wasm.tmp5b47d1b",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/work-products.bin",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/query-cache.bin",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/f54xe8ljvam3lu4z712zzn6rq.o",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/f3795x2wq9l4fwy125qf8y5o8.o",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/f20mwm0ees4jfcy3qxmog51w1.o",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/f04amk4on6f7kfjfvl8bmhp7s.o",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1pae5ahopy5e8/s-hg1uxn5nvd-07856p7-ct8b410b310yv8dq306vrx1o4/ezf8rtckst6nohl9zhtibw47t.o",
-    "reference_app/notes.md",
+    "stories/leptos/dist/radix-leptos-stories-46551c470ffe9d70.js",
+    "stories/leptos/dist/radix-leptos-stories-46551c470ffe9d70_bg.wasm",
+    "target/wasm32-unknown-unknown/debug/deps/radix_leptos_stories-6474aa3b88c3af4e.wasm",
+    "target/wasm32-unknown-unknown/debug/deps/radix_leptos_stories-6474aa3b88c3af4e.wasm.tmp1ead45b",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1lv2tq1xh9a7u/s-hg9fi0hg0l-11p39yn-6dd3v5gujesdl6hengcvaps91/work-products.bin",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1lv2tq1xh9a7u/s-hg9fi0hg0l-11p39yn-6dd3v5gujesdl6hengcvaps91/query-cache.bin",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1lv2tq1xh9a7u/s-hg9fi0hg0l-11p39yn-6dd3v5gujesdl6hengcvaps91/f3qcxfh8dry92llfgej4cl4se.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1lv2tq1xh9a7u/s-hg9fi0hg0l-11p39yn-6dd3v5gujesdl6hengcvaps91/f25eqxfnj19nzzvjdir2uv82v.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1lv2tq1xh9a7u/s-hg9fi0hg0l-11p39yn-6dd3v5gujesdl6hengcvaps91/f166ra27h1ct8l77xzx90f740.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1lv2tq1xh9a7u/s-hg9fi0hg0l-11p39yn-6dd3v5gujesdl6hengcvaps91/esoqyo6lojh1kjdbtnqxoewak.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_stories-1lv2tq1xh9a7u/s-hg9fi0hg0l-11p39yn-6dd3v5gujesdl6hengcvaps91/eqaabjs9wkcir41qy6onauy7k.o",
+    "reference_app/cypress/screenshots/select.cy.js/Select -- item-aligned positioning -- selection works in item-aligned mode (failed).png",
+    "reference_app/cypress/screenshots/chromatic-debug.cy.js/Chromatic story debug -- inspects DOM hierarchy around listbox (failed).png",
+    "reference_app/cypress/screenshots/chromatic-debug.cy.js/Chromatic story debug -- inspects ChromaticNoDefaultValue page DOM (embed mode) (failed).png",
+    "reference_app/cypress/screenshots/chromatic-debug.cy.js/Chromatic story debug -- inspects ChromaticNoDefaultValue page DOM (failed).png",
+    "reference_app/cypress/screenshots/select-forced-open.cy.js/Select (forced open) -- forced open (item-aligned) -- selected item has data-state=checked (failed).png",
+    "reference_app/cypress/screenshots/select-forced-open.cy.js/Select (forced open) -- forced open (item-aligned) -- items are visible and have role=option (failed).png",
+    "reference_app/cypress/screenshots/select-forced-open.cy.js/Select (forced open) -- forced open (popper) -- selected item has data-state=checked (failed).png",
+    "reference_app/cypress/screenshots/select-forced-open.cy.js/Select (forced open) -- forced open (popper) -- items are visible and have role=option (failed).png",
+    "reference_app/cypress/screenshots/select.cy.js/Select -- typeahead -- repeated character cycles through matching items (failed).png",
+    "reference_app/cypress/screenshots/select.cy.js/Select -- value display -- readout updates on selection (failed).png",
+    "notes/leptos-select.md",
     "notes/leptos-navigation-menu.md",
+    "reference_app/notes.md",
     "notes/leptos-accessible-icon.md",
     "notes/leptos-collection.md",
-    "reference_app/cypress/screenshots/toast.cy.js/Toast -- accessibility -- Viewport has a label for screen readers (failed).png",
-    "reference_app/cypress/screenshots/toast.cy.js/Toast -- accessibility -- Viewport has aria-label (failed).png",
-    "reference_app/cypress/screenshots/toast.cy.js/Toast -- accessibility -- Viewport has role=region (failed).png",
-    "reference_app/cypress/screenshots/select.cy.js/Select -- keyboard navigation -- Enter selects and closes (failed).png",
-    "reference_app/cypress/screenshots/select.cy.js/Select -- pointer interaction -- click option selects and closes (failed).png",
-    "reference_app/cypress/screenshots/select.cy.js/Select -- keyboard navigation -- Space selects and closes (failed).png",
-    "reference_app/cypress/screenshots/dropdown-menu.cy.js/Dropdown Menu -- disabled state -- disabled item cannot be activated (failed).png",
-    "reference_app/cypress/screenshots/dropdown-menu.cy.js/Dropdown Menu -- submenu -- Escape closes submenu only (failed).png",
-    "reference_app/cypress/screenshots/dropdown-menu.cy.js/Dropdown Menu -- submenu -- ArrowLeft closes submenu (failed).png",
-    "reference_app/cypress/screenshots/dropdown-menu.cy.js/Dropdown Menu -- data attributes -- Item has data-highlighted when focused (failed).png",
     "target/doc/static.files/SourceSerif4-LICENSE-a2cfd9d5.md",
     "node_modules/lodash/README.md",
     "node_modules/dayjs/README.md",
@@ -238,7 +239,6 @@
     "node_modules/dom-accessibility-api/LICENSE.md",
     "node_modules/qs/README.md",
     "node_modules/qs/LICENSE.md",
-    "node_modules/qs/CHANGELOG.md",
     "Untitled.canvas"
   ]
 }

@@ -31,10 +31,13 @@ pub fn App() -> impl IntoView {
                     <Route path=path!("/progress") view=pages::progress::ProgressPage />
                     <Route path=path!("/radio-group") view=pages::radio_group::RadioGroupPage />
                     <Route path=path!("/scroll-area") view=pages::scroll_area::ScrollAreaPage />
+                    <Route path=path!("/select") view=pages::select::SelectPage />
+                    <Route path=path!("/select/forced-open") view=pages::select::SelectForcedOpenPage />
                     <Route path=path!("/separator") view=pages::separator::SeparatorPage />
                     <Route path=path!("/slider") view=pages::slider::SliderPage />
                     <Route path=path!("/switch") view=pages::switch::SwitchPage />
                     <Route path=path!("/tabs") view=pages::tabs::TabsPage />
+                    <Route path=path!("/toast") view=pages::toast::ToastPage />
                     <Route path=path!("/toggle") view=pages::toggle::TogglePage />
                     <Route path=path!("/toggle-group") view=pages::toggle_group::ToggleGroupPage />
                     <Route path=path!("/toolbar") view=pages::toolbar::ToolbarPage />

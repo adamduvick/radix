@@ -46,10 +46,12 @@ members = [
     "packages/primitives/leptos/radio-group",
     "packages/primitives/leptos/roving-focus",
     "packages/primitives/leptos/scroll-area",
+    "packages/primitives/leptos/select",
     "packages/primitives/leptos/separator",
     "packages/primitives/leptos/slider",
     "packages/primitives/leptos/switch",
     "packages/primitives/leptos/tabs",
+    "packages/primitives/leptos/toast",
     "packages/primitives/leptos/toggle",
     "packages/primitives/leptos/toggle-group",
     "packages/primitives/leptos/toolbar",
@@ -119,11 +121,13 @@ radix-leptos-primitive = { path = "./packages/primitives/leptos/primitive", vers
 radix-leptos-progress = { path = "./packages/primitives/leptos/progress", version = "0.0.2" }
 radix-leptos-radio-group = { path = "./packages/primitives/leptos/radio-group", version = "0.0.2" }
 radix-leptos-scroll-area = { path = "./packages/primitives/leptos/scroll-area", version = "0.0.2" }
+radix-leptos-select = { path = "./packages/primitives/leptos/select", version = "0.0.2" }
 radix-leptos-roving-focus = { path = "./packages/primitives/leptos/roving-focus", version = "0.0.2" }
 radix-leptos-separator = { path = "./packages/primitives/leptos/separator", version = "0.0.2" }
 radix-leptos-slider = { path = "./packages/primitives/leptos/slider", version = "0.0.2" }
 radix-leptos-switch = { path = "./packages/primitives/leptos/switch", version = "0.0.2" }
 radix-leptos-tabs = { path = "./packages/primitives/leptos/tabs", version = "0.0.2" }
+radix-leptos-toast = { path = "./packages/primitives/leptos/toast", version = "0.0.2" }
 radix-leptos-toggle = { path = "./packages/primitives/leptos/toggle", version = "0.0.2" }
 radix-leptos-toggle-group = { path = "./packages/primitives/leptos/toggle-group", version = "0.0.2" }
 radix-leptos-toolbar = { path = "./packages/primitives/leptos/toolbar", version = "0.0.2" }

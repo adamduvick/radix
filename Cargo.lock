@@ -4372,6 +4372,7 @@ dependencies = [
  "console_error_panic_hook",
  "console_log",
  "leptos",
+ "leptos-node-ref",
  "leptos_router",
  "log",
  "radix-leptos-accordion",
@@ -4387,10 +4388,12 @@ dependencies = [
  "radix-leptos-radio-group",
  "radix-leptos-roving-focus",
  "radix-leptos-scroll-area",
+ "radix-leptos-select",
  "radix-leptos-separator",
  "radix-leptos-slider",
  "radix-leptos-switch",
  "radix-leptos-tabs",
+ "radix-leptos-toast",
  "radix-leptos-toggle",
  "radix-leptos-toggle-group",
  "radix-leptos-toolbar",
@@ -4426,6 +4429,30 @@ dependencies = [
  "radix-leptos-primitive",
  "radix-number",
  "send_wrapper",
+ "web-sys",
+]
+
+[[package]]
+name = "radix-leptos-select"
+version = "0.0.2"
+dependencies = [
+ "js-sys",
+ "leptos",
+ "leptos-node-ref",
+ "radix-leptos-collection",
+ "radix-leptos-compose-refs",
+ "radix-leptos-direction",
+ "radix-leptos-dismissable-layer",
+ "radix-leptos-focus-guards",
+ "radix-leptos-focus-scope",
+ "radix-leptos-id",
+ "radix-leptos-popper",
+ "radix-leptos-portal",
+ "radix-leptos-primitive",
+ "radix-leptos-use-controllable-state",
+ "radix-leptos-visually-hidden",
+ "send_wrapper",
+ "wasm-bindgen",
  "web-sys",
 ]
 
@@ -4494,6 +4521,7 @@ dependencies = [
  "radix-leptos-radio-group",
  "radix-leptos-roving-focus",
  "radix-leptos-scroll-area",
+ "radix-leptos-select",
  "radix-leptos-separator",
  "radix-leptos-slider",
  "radix-leptos-switch",
@@ -4538,6 +4566,26 @@ dependencies = [
  "radix-leptos-roving-focus",
  "radix-leptos-use-controllable-state",
  "send_wrapper",
+ "web-sys",
+]
+
+[[package]]
+name = "radix-leptos-toast"
+version = "0.0.2"
+dependencies = [
+ "js-sys",
+ "leptos",
+ "leptos-node-ref",
+ "radix-leptos-collection",
+ "radix-leptos-compose-refs",
+ "radix-leptos-dismissable-layer",
+ "radix-leptos-portal",
+ "radix-leptos-presence",
+ "radix-leptos-primitive",
+ "radix-leptos-use-controllable-state",
+ "radix-leptos-visually-hidden",
+ "send_wrapper",
+ "wasm-bindgen",
  "web-sys",
 ]
 

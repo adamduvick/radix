@@ -13,7 +13,7 @@ import Popover from './pages/Popover';
 import Progress from './pages/Progress';
 import RadioGroup from './pages/RadioGroup';
 import ScrollArea from './pages/ScrollArea';
-import Select from './pages/Select';
+import Select, {SelectForcedOpenPage} from './pages/Select';
 import Separator from './pages/Separator';
 import Slider from './pages/Slider';
 import Switch from './pages/Switch';
@@ -128,6 +128,7 @@ export default function App() {
             <Route path="/radio-group" element={<RadioGroup />} />
             <Route path="/scroll-area" element={<ScrollArea />} />
             <Route path="/select" element={<Select />} />
+            <Route path="/select/forced-open" element={<SelectForcedOpenPage />} />
             <Route path="/separator" element={<Separator />} />
             <Route path="/slider" element={<Slider />} />
             <Route path="/switch" element={<Switch />} />

@@ -26,6 +26,7 @@ pub mod progress;
 pub mod radio_group;
 pub mod roving_focus;
 pub mod scroll_area;
+pub mod select;
 pub mod separator;
 pub mod slider;
 // pub mod slot;

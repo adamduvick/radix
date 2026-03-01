@@ -9,8 +9,8 @@ use crate::primitives::{
     accessible_icon, accordion, alert_dialog, arrow, aspect_ratio, checkbox, collapsible,
     collection, dialog, dismissable_layer, focus_scope, form, hover_card, label, navigation_menu,
     one_time_password_field, password_toggle_field, popover, popper, portal, presence, progress,
-    radio_group, roving_focus, scroll_area, separator, slider, switch, tabs, toggle, toggle_group,
-    toolbar, tooltip, visually_hidden,
+    radio_group, roving_focus, scroll_area, select, separator, slider, switch, tabs, toggle,
+    toggle_group, toolbar, tooltip, visually_hidden,
 };
 
 #[component]
@@ -336,6 +336,30 @@ fn EmbedApp() -> impl IntoView {
                     <Route path=path!("/scroll-area/chromatic-dynamic-content-before-loaded") view=scroll_area::ChromaticDynamicContentBeforeLoaded />
                     <Route path=path!("/scroll-area/chromatic-dynamic-content-after-loaded") view=scroll_area::ChromaticDynamicContentAfterLoaded />
 
+                    <Route path=path!("/select/styled") view=select::Styled />
+                    <Route path=path!("/select/controlled") view=select::Controlled />
+                    <Route path=path!("/select/position") view=select::Position />
+                    <Route path=path!("/select/no-default-value") view=select::NoDefaultValue />
+                    <Route path=path!("/select/typeahead") view=select::Typeahead />
+                    <Route path=path!("/select/with-groups") view=select::WithGroups />
+                    <Route path=path!("/select/labelling") view=select::Labelling />
+                    <Route path=path!("/select/right-to-left") view=select::RightToLeft />
+                    <Route path=path!("/select/within-form") view=select::WithinForm />
+                    <Route path=path!("/select/disabled-within-form") view=select::DisabledWithinForm />
+                    <Route path=path!("/select/required-within-form") view=select::RequiredWithinForm />
+                    <Route path=path!("/select/within-dialog") view=select::WithinDialog />
+                    <Route path=path!("/select/with-very-long-select-items") view=select::WithVeryLongSelectItems />
+                    <Route path=path!("/select/chromatic-short-options-padded-content") view=select::ChromaticShortOptionsPaddedContent />
+                    <Route path=path!("/select/chromatic-short-options-padded-viewport") view=select::ChromaticShortOptionsPaddedViewport />
+                    <Route path=path!("/select/chromatic-long-options-padded-content") view=select::ChromaticLongOptionsPaddedContent />
+                    <Route path=path!("/select/chromatic-long-options-padded-viewport") view=select::ChromaticLongOptionsPaddedViewport />
+                    <Route path=path!("/select/chromatic-top-first-padded-content") view=select::ChromaticTopFirstPaddedContent />
+                    <Route path=path!("/select/chromatic-top-first-padded-viewport") view=select::ChromaticTopFirstPaddedViewport />
+                    <Route path=path!("/select/chromatic-bottom-last-padded-content") view=select::ChromaticBottomLastPaddedContent />
+                    <Route path=path!("/select/chromatic-bottom-last-padded-viewport") view=select::ChromaticBottomLastPaddedViewport />
+                    <Route path=path!("/select/chromatic-no-default-value") view=select::ChromaticNoDefaultValue />
+                    <Route path=path!("/select/cypress") view=select::Cypress />
+
                     <Route path=path!("/separator/styled") view=separator::Styled />
 
                     <Route path=path!("/slider/styled") view=slider::Styled />
@@ -558,6 +582,31 @@ fn ShellApp() -> impl IntoView {
                             ("/scroll-area/chromatic", "Chromatic"),
                             ("/scroll-area/chromatic-dynamic-content-before-loaded", "Chromatic Dynamic Content Before Loaded"),
                             ("/scroll-area/chromatic-dynamic-content-after-loaded", "Chromatic Dynamic Content After Loaded"),
+                        ] />
+                        <NavSection title="Select" stories=vec![
+                            ("/select/styled", "Styled"),
+                            ("/select/controlled", "Controlled"),
+                            ("/select/position", "Position"),
+                            ("/select/no-default-value", "No Default Value"),
+                            ("/select/typeahead", "Typeahead"),
+                            ("/select/with-groups", "With Groups"),
+                            ("/select/labelling", "Labelling"),
+                            ("/select/right-to-left", "Right To Left"),
+                            ("/select/within-form", "Within Form"),
+                            ("/select/disabled-within-form", "Disabled Within Form"),
+                            ("/select/required-within-form", "Required Within Form"),
+                            ("/select/within-dialog", "Within Dialog"),
+                            ("/select/with-very-long-select-items", "With Very Long Select Items"),
+                            ("/select/chromatic-short-options-padded-content", "Chromatic Short Options Padded Content"),
+                            ("/select/chromatic-short-options-padded-viewport", "Chromatic Short Options Padded Viewport"),
+                            ("/select/chromatic-long-options-padded-content", "Chromatic Long Options Padded Content"),
+                            ("/select/chromatic-long-options-padded-viewport", "Chromatic Long Options Padded Viewport"),
+                            ("/select/chromatic-top-first-padded-content", "Chromatic Top First Padded Content"),
+                            ("/select/chromatic-top-first-padded-viewport", "Chromatic Top First Padded Viewport"),
+                            ("/select/chromatic-bottom-last-padded-content", "Chromatic Bottom Last Padded Content"),
+                            ("/select/chromatic-bottom-last-padded-viewport", "Chromatic Bottom Last Padded Viewport"),
+                            ("/select/chromatic-no-default-value", "Chromatic No Default Value"),
+                            ("/select/cypress", "Cypress"),
                         ] />
                         <NavSection title="Separator" stories=vec![
                             ("/separator/styled", "Styled"),

@@ -185,7 +185,7 @@ fn RovingFocusGroupImpl(
     });
 
     Owner::on_cleanup(move || {
-        if let Some(node) = group_ref.get() {
+        if let Some(node) = group_ref.get_untracked() {
             let el: &web_sys::HtmlElement = node.deref().unchecked_ref();
             handle_entry_focus.with_value(|closure| {
                 el.remove_event_listener_with_callback(
@@ -381,7 +381,7 @@ pub fn RovingFocusGroupItem(
                         let window = web_sys::window().expect("Window should exist.");
                         window
                             .set_timeout_with_callback_and_timeout_and_arguments_0(
-                                &Closure::once_into_js(move || {
+                                Closure::once_into_js(move || {
                                     on_item_focus.run(item_id);
                                 })
                                 .unchecked_ref(),

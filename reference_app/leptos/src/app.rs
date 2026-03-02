@@ -21,10 +21,12 @@ pub fn App() -> impl IntoView {
                     <Route path=path!("/") view=Index />
                     <Route path=path!("/accordion") view=pages::accordion::AccordionPage />
                     <Route path=path!("/alert-dialog") view=pages::alert_dialog::AlertDialogPage />
+                    <Route path=path!("/avatar") view=pages::avatar::AvatarPage />
                     <Route path=path!("/checkbox") view=pages::checkbox::CheckboxPage />
                     <Route path=path!("/collapsible") view=pages::collapsible::CollapsiblePage />
                     <Route path=path!("/dialog") view=pages::dialog::DialogPage />
                     <Route path=path!("/form") view=pages::form::FormPage />
+                    <Route path=path!("/menu") view=pages::menu::MenuPage />
                     <Route path=path!("/hover-card") view=pages::hover_card::HoverCardPage />
                     <Route path=path!("/navigation-menu") view=pages::navigation_menu::NavigationMenuPage />
                     <Route path=path!("/popover") view=pages::popover::PopoverPage />

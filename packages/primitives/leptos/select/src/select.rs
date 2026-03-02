@@ -1,6 +1,6 @@
 use std::marker::PhantomData;
-use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
+use std::sync::atomic::{AtomicI32, Ordering};
 
 use leptos::{
     attribute_interceptor::AttributeInterceptor, context::Provider, ev, html, prelude::*,
@@ -528,8 +528,11 @@ pub fn SelectContent(
         is_positioned: signal(false).0,
         search_ref: StoredValue::new(String::new()),
     };
-    let hidden_item_ref_callback: Callback<(Option<SendWrapper<web_sys::HtmlElement>>, String, bool)> =
-        Callback::new(|_| {});
+    let hidden_item_ref_callback: Callback<(
+        Option<SendWrapper<web_sys::HtmlElement>>,
+        String,
+        bool,
+    )> = Callback::new(|_| {});
 
     // React's SelectContent renders SelectContentImpl directly when open (no Presence
     // wrapper). When closed, it renders children into a DocumentFragment to keep
@@ -2337,8 +2340,7 @@ fn position_item_aligned(
 
     let selected_item_half_height = selected_item.offset_height() as f64 / 2.0;
     let item_offset_middle = selected_item.offset_top() as f64 + selected_item_half_height;
-    let content_top_to_item_middle =
-        content_border_top + content_padding_top + item_offset_middle;
+    let content_top_to_item_middle = content_border_top + content_padding_top + item_offset_middle;
     let item_middle_to_content_bottom = full_content_height - content_top_to_item_middle;
 
     let will_align_without_top_overflow = content_top_to_item_middle <= top_edge_to_trigger_middle;
@@ -2375,8 +2377,8 @@ fn position_item_aligned(
         let height = clamped_top_edge_to_trigger_middle + item_middle_to_content_bottom;
         let _ = wrapper_style.set_property("height", &format!("{}px", height));
         viewport.set_scroll_top(
-            (content_top_to_item_middle - top_edge_to_trigger_middle
-                + viewport.offset_top() as f64) as i32,
+            (content_top_to_item_middle - top_edge_to_trigger_middle + viewport.offset_top() as f64)
+                as i32,
         );
     }
 

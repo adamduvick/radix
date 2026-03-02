@@ -1,12 +1,14 @@
 import {Routes, Route, Link} from 'react-router-dom';
 import Accordion from './pages/Accordion';
 import AlertDialog from './pages/AlertDialog';
+import Avatar from './pages/Avatar';
 import Checkbox from './pages/Checkbox';
 import Collapsible from './pages/Collapsible';
 import ContextMenu from './pages/ContextMenu';
 import Dialog from './pages/Dialog';
 import DropdownMenu from './pages/DropdownMenu';
 import Form from './pages/Form';
+import Menu from './pages/Menu';
 import HoverCard from './pages/HoverCard';
 import NavigationMenu from './pages/NavigationMenu';
 import Popover from './pages/Popover';
@@ -38,6 +40,9 @@ function Index() {
                         <Link to="/alert-dialog">Alert Dialog</Link>
                     </li>
                     <li>
+                        <Link to="/avatar">Avatar</Link>
+                    </li>
+                    <li>
                         <Link to="/checkbox">Checkbox</Link>
                     </li>
                     <li>
@@ -57,6 +62,9 @@ function Index() {
                     </li>
                     <li>
                         <Link to="/hover-card">Hover Card</Link>
+                    </li>
+                    <li>
+                        <Link to="/menu">Menu</Link>
                     </li>
                     <li>
                         <Link to="/navigation-menu">Navigation Menu</Link>
@@ -115,12 +123,14 @@ export default function App() {
             <Route path="/" element={<Index />} />
             <Route path="/accordion" element={<Accordion />} />
             <Route path="/alert-dialog" element={<AlertDialog />} />
+            <Route path="/avatar" element={<Avatar />} />
             <Route path="/checkbox" element={<Checkbox />} />
             <Route path="/collapsible" element={<Collapsible />} />
             <Route path="/context-menu" element={<ContextMenu />} />
             <Route path="/dialog" element={<Dialog />} />
             <Route path="/dropdown-menu" element={<DropdownMenu />} />
             <Route path="/form" element={<Form />} />
+            <Route path="/menu" element={<Menu />} />
             <Route path="/hover-card" element={<HoverCard />} />
             <Route path="/navigation-menu" element={<NavigationMenu />} />
             <Route path="/popover" element={<Popover />} />

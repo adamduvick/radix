@@ -16,7 +16,7 @@ dependencies:
   - "[[leptos-use-controllable-state]]"
   - "[[leptos-visually-hidden]]"
 ported: true
-tested: false
+tested: true
 tested_story: true
 ---
 ## Intent

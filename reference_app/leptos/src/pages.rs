@@ -1,10 +1,12 @@
 pub mod accordion;
 pub mod alert_dialog;
+pub mod avatar;
 pub mod checkbox;
 pub mod collapsible;
 pub mod dialog;
 pub mod form;
 pub mod hover_card;
+pub mod menu;
 pub mod navigation_menu;
 pub mod popover;
 pub mod progress;

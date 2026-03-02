@@ -174,7 +174,11 @@ pub fn use_collection<ItemData: Clone + Send + Sync + 'static>()
                     .expect("Node should be queried."),
             );
 
-            let mut ordered_items = context.item_map.get_untracked().into_values().collect::<Vec<_>>();
+            let mut ordered_items = context
+                .item_map
+                .get_untracked()
+                .into_values()
+                .collect::<Vec<_>>();
             ordered_items.sort_by(|a, b| {
                 let index_a = ordered_nodes.iter().position(|node| {
                     a.r#ref

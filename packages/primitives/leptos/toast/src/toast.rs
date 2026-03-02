@@ -203,7 +203,7 @@ pub fn ToastViewport(
                             || (key == "metaKey" && event.meta_key())
                             || (key == "shiftKey" && event.shift_key())
                     });
-                if is_hotkey_pressed && let Some(el) = viewport_ref.get() {
+                if is_hotkey_pressed && let Some(el) = viewport_ref.get_untracked() {
                     let el: &web_sys::HtmlElement = (*el).unchecked_ref();
                     let _ = el.focus();
                 }

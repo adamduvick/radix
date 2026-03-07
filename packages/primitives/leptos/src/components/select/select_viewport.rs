@@ -14,11 +14,6 @@ pub fn SelectViewport(
 
     let content_context = expect_context::<SelectContentContextValue>();
     let composed_ref = use_composed_refs(vec![node_ref, content_context.viewport_ref]);
-    let styled_ref = use_internal_styles(composed_ref, &[
-        ("position", "relative"),
-        ("flex", "1"),
-        ("overflow", "hidden auto"),
-    ]);
 
     view! {
         <>
@@ -32,7 +27,10 @@ pub fn SelectViewport(
                         attr:data-radix-select-viewport=""
                         attr:role="presentation"
                         {..attrs}
-                        node_ref=styled_ref
+                        node_ref=composed_ref
+                        style:position="relative"
+                        style:flex="1"
+                        style:overflow="hidden auto"
                     >
                         {children.try_with_value(|children| children.as_ref().map(|c| c()))}
                     </Primitive>

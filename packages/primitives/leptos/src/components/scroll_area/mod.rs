@@ -3,7 +3,6 @@ use std::fmt::{self, Display, Formatter};
 
 use crate::support::compose_refs::use_composed_refs;
 use crate::support::direction::{Direction, use_direction};
-use crate::support::use_internal_styles::use_internal_styles;
 use crate::support::presence::Presence;
 use crate::support::primitive::Primitive;
 use leptos::{

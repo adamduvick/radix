@@ -2,7 +2,6 @@ use crate::support::compose_refs::use_composed_refs;
 use crate::support::direction::{Direction, use_direction};
 use crate::support::id::use_id;
 use crate::support::presence::Presence;
-use crate::support::use_internal_styles::use_internal_styles_effect;
 use crate::support::primitive::{
     Primitive, compose_callbacks, data_attr, prop_or, prop_or_default,
 };
@@ -331,14 +330,6 @@ fn TabsContentImpl(
     // suppress the entry animation by setting animation-duration to 0s for one frame.
     let is_mount_animation_prevented = RwSignal::new(is_selected.get_untracked());
 
-    let styled_ref = use_internal_styles_effect(composed_ref, move |style| {
-        if is_mount_animation_prevented.get() {
-            let _ = style.set_property("animation-duration", "0s");
-        } else {
-            let _ = style.remove_property("animation-duration");
-        }
-    });
-
     let raf_closure: SendWrapper<Closure<dyn Fn()>> = SendWrapper::new(Closure::new(move || {
         is_mount_animation_prevented.set(false);
     }));
@@ -366,7 +357,8 @@ fn TabsContentImpl(
         <Primitive
             element=html::div
             as_child=as_child
-            node_ref=styled_ref
+            node_ref=composed_ref
+            style:animation-duration=move || is_mount_animation_prevented.get().then_some("0s")
             attr:data-state=move || if is_selected.get() { "active" } else { "inactive" }
             attr:data-orientation=move || orientation.get().to_string()
             attr:role="tabpanel"

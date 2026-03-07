@@ -7,7 +7,6 @@ use crate::support::collection::{
 };
 use crate::support::compose_refs::use_composed_refs;
 use crate::support::direction::{Direction, use_direction};
-use crate::support::use_internal_styles::use_internal_styles;
 use crate::support::id::use_id;
 use crate::support::primitive::{Primitive, compose_callbacks, prop_or, prop_or_default};
 use crate::support::use_controllable_state::{UseControllableStateParams, use_controllable_state};
@@ -148,7 +147,6 @@ fn RovingFocusGroupImpl(
 
     let group_ref = AnyNodeRef::new();
     let composed_refs = use_composed_refs(vec![node_ref, group_ref]);
-    let composed_refs = use_internal_styles(composed_refs, &[("outline", "none")]);
     let direction = use_direction(dir);
     let (current_tab_stop_id, set_current_tab_stop_id) =
         use_controllable_state(UseControllableStateParams {
@@ -235,6 +233,7 @@ fn RovingFocusGroupImpl(
                     element=html::div
                     as_child=as_child
                     node_ref=composed_refs
+                    style:outline="none"
                     attr:tabindex=move || match is_tabbing_back_out.get() || (items_initialized.get() && focusable_items_count.get() == 0) {
                         true => "-1",
                         false => "0",

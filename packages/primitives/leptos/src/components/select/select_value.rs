@@ -20,7 +20,6 @@ pub fn SelectValue(
     set_value_node_has_children.set(has_children);
 
     let composed_ref = use_composed_refs(vec![node_ref, context.value_node_ref]);
-    let styled_ref = use_internal_styles(composed_ref, &[("pointer-events", "none")]);
 
     // The selected item's text will render its content via a portal into this span
     // when it is selected AND this component has no static children.
@@ -29,7 +28,8 @@ pub fn SelectValue(
             <Primitive
                 element=html::span
                 as_child=as_child
-                node_ref=styled_ref
+                node_ref=composed_ref
+                style:pointer-events="none"
                 // Empty attr to prevent view! macro parse ambiguity with {..attrs}
                 attr:data-radix-select-value=""
                 {..attrs}

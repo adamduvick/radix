@@ -693,11 +693,6 @@ fn SelectItemAlignedPosition(
     let context = expect_context::<SelectContextValue>();
     let content_ref = AnyNodeRef::new();
     let composed_content_ref = use_composed_refs(vec![node_ref, content_ref]);
-    let styled_content_ref = use_internal_styles(composed_content_ref, &[
-        ("box-sizing", "border-box"),
-        ("max-height", "100%"),
-        ("outline", "none"),
-    ]);
 
     // Transfer caller-added attributes from the wrapper div to the inner content div.
     //
@@ -802,7 +797,10 @@ fn SelectItemAlignedPosition(
             <Primitive
                 element=html::div
                 as_child=as_child
-                node_ref=styled_content_ref
+                node_ref=composed_content_ref
+                style:box-sizing="border-box"
+                style:max-height="100%"
+                style:outline="none"
                 attr:role="listbox"
                 attr:id=move || context.content_id.get()
                 attr:data-state=move || if context.open.get() { "open" } else { "closed" }

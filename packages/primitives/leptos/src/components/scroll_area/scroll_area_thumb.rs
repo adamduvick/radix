@@ -58,10 +58,6 @@ fn ScrollAreaThumbImpl(
 
     let thumb_ref = AnyNodeRef::new();
     let composed_ref = use_composed_refs(vec![node_ref, thumb_ref]);
-    let styled_ref = use_internal_styles(composed_ref, &[
-        ("width", "var(--radix-scroll-area-thumb-width)"),
-        ("height", "var(--radix-scroll-area-thumb-height)"),
-    ]);
 
     // Set thumb element in scrollbar context
     Effect::new(move |_| {
@@ -186,7 +182,9 @@ fn ScrollAreaThumbImpl(
             <Primitive
                 element=html::div
                 as_child=as_child
-                node_ref=styled_ref
+                node_ref=composed_ref
+                style:width="var(--radix-scroll-area-thumb-width)"
+                style:height="var(--radix-scroll-area-thumb-height)"
                 attr:class=forwarded_class.get_value()
                 attr:data-state=move || if has_thumb.get() { "visible" } else { "hidden" }
                 on:pointerdown=move |event: ev::PointerEvent| {

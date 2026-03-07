@@ -185,14 +185,15 @@ fn SelectScrollButtonImpl(
         });
     });
 
+    let styled_ref = use_internal_styles(node_ref, &[("flex-shrink", "0")]);
+
     view! {
         <AttributeInterceptor let:attrs>
             <Primitive
                 element=html::div
                 as_child=as_child
-                node_ref=node_ref
+                node_ref=styled_ref
                 attr:aria-hidden="true"
-                attr:style="flex-shrink: 0;"
                 on:pointerdown=move |_: ev::PointerEvent| {
                     if auto_scroll_timer_ref.try_get_value().flatten().is_none() {
                         let timer_id = web_sys::window()

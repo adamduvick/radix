@@ -88,14 +88,15 @@ pub fn ContextMenuTrigger(
         set_popper_virtual_ref(Box::new(PointVirtualElement { x: p.x, y: p.y }));
     });
 
+    let styled_ref = use_internal_styles(node_ref, &[("-webkit-touch-callout", "none")]);
+
     view! {
         <Primitive
             element=html::span
             as_child=as_child
-            node_ref=node_ref
+            node_ref=styled_ref
             attr:data-state=move || if context.open.get() { "open" } else { "closed" }
             attr:data-disabled=data_attr(disabled)
-            attr:style="-webkit-touch-callout: none;"
             on:contextmenu=move |event: ev::MouseEvent| {
                 if disabled.get_untracked() {
                     return;

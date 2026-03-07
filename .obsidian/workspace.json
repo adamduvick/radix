@@ -21,24 +21,10 @@
             "id": "3e772ed181e91dea",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "notes/leptos-slot.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "leptos-slot"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ],
@@ -204,17 +190,19 @@
   },
   "active": "3e772ed181e91dea",
   "lastOpenFiles": [
-    "reference_app/leptos/dist/radix-leptos-reference-app-6bac111e498f6c3.js",
-    "reference_app/leptos/dist/radix-leptos-reference-app-6bac111e498f6c3_bg.wasm",
-    "target/wasm32-unknown-unknown/debug/deps/radix_leptos_reference_app-90549988d78c90a2.wasm",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfaqd0m9k-04a26vr-c99vwshl4qv1qg24p83x607gg/work-products.bin",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfaqd0m9k-04a26vr-c99vwshl4qv1qg24p83x607gg/query-cache.bin",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfaqd0m9k-04a26vr-c99vwshl4qv1qg24p83x607gg/f4xu2giywf7fp6cefr8ygxz1g.o",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfaqd0m9k-04a26vr-c99vwshl4qv1qg24p83x607gg/f4mh1xxhypz3b8bwk39t3c3gg.o",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfaqd0m9k-04a26vr-c99vwshl4qv1qg24p83x607gg/f4ie9t356trity703a7n34ehl.o",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfaqd0m9k-04a26vr-c99vwshl4qv1qg24p83x607gg/f4abbtd2i1n30upxw6kpgarf6.o",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfaqd0m9k-04a26vr-c99vwshl4qv1qg24p83x607gg/f48l90wgz8xtna5rur42elyd0.o",
-    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfaqd0m9k-04a26vr-c99vwshl4qv1qg24p83x607gg/f243u3xwkedaxb2pqx8yt9dj0.o",
+    "reference_app/leptos/dist/radix-leptos-reference-app-9f482a60463f9b8a_bg.wasm",
+    "reference_app/leptos/dist/radix-leptos-reference-app-9f482a60463f9b8a.js",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfqwn6be3-1vk5xow-9tdjufshycwiiqk3gypt51hxx/work-products.bin",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfqwn6be3-1vk5xow-9tdjufshycwiiqk3gypt51hxx/f4xu2giywf7fp6cefr8ygxz1g.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfqwn6be3-1vk5xow-9tdjufshycwiiqk3gypt51hxx/query-cache.bin",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfqwn6be3-1vk5xow-9tdjufshycwiiqk3gypt51hxx/f4mh1xxhypz3b8bwk39t3c3gg.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfqwn6be3-1vk5xow-9tdjufshycwiiqk3gypt51hxx/f4ie9t356trity703a7n34ehl.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfqwn6be3-1vk5xow-9tdjufshycwiiqk3gypt51hxx/f4abbtd2i1n30upxw6kpgarf6.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfqwn6be3-1vk5xow-9tdjufshycwiiqk3gypt51hxx/f48l90wgz8xtna5rur42elyd0.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfqwn6be3-1vk5xow-9tdjufshycwiiqk3gypt51hxx/f243u3xwkedaxb2pqx8yt9dj0.o",
+    "target/wasm32-unknown-unknown/debug/incremental/radix_leptos_reference_app-2e01y5xufix2a/s-hgfqwn6be3-1vk5xow-9tdjufshycwiiqk3gypt51hxx/f1hb5zgjw11zsc09m3adl4dfx.o",
+    "notes/leptos-slot.md",
+    "reference_app/cypress/screenshots/accordion.cy.js/Accordion -- style merging -- user styles do not clobber internal CSS custom properties on content (failed).png",
     "reference_app/cypress/screenshots/one-time-password-field.cy.js/OneTimePasswordField -- keyboard navigation -- Tab leaves the OTP field entirely (failed).png",
     "reference_app/cypress/screenshots/menubar.cy.js/Menubar -- inter-menu navigation -- ArrowLeft wraps from first to last menu (failed).png",
     "reference_app/cypress/screenshots/popover.cy.js/Popover -- modal variant -- keyboard opencloseescape work (failed).png",
@@ -224,7 +212,6 @@
     "reference_app/cypress/screenshots/password-toggle-field.cy.js/PasswordToggleField -- accessibility -- implicit aria-label is Show password when hidden (icon variant) (failed).png",
     "reference_app/cypress/screenshots/password-toggle-field.cy.js/PasswordToggleField -- accessibility -- icon toggle has aria-controls pointing to input id (failed).png",
     "reference_app/cypress/screenshots/password-toggle-field.cy.js/PasswordToggleField -- slot rendering -- slot variant toggles input type (failed).png",
-    "reference_app/cypress/screenshots/password-toggle-field.cy.js/PasswordToggleField -- slot rendering -- shows Hide text when visible (failed).png",
     "notes/leptos-one-time-password-field.md",
     "target/doc/static.files/SourceSerif4-LICENSE-a2cfd9d5.md",
     "notes/leptos-menubar.md",
@@ -249,7 +236,6 @@
     "packages/primitives/leptos-old/direction/README.md",
     "packages/primitives/leptos-old/focus-scope/README.md",
     "packages/primitives/leptos-old/focus-guards/README.md",
-    "packages/primitives/leptos-old/dismissable-layer/README.md",
     "Untitled.canvas"
   ]
 }

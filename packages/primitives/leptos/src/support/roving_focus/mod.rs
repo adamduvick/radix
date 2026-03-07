@@ -7,6 +7,7 @@ use crate::support::collection::{
 };
 use crate::support::compose_refs::use_composed_refs;
 use crate::support::direction::{Direction, use_direction};
+use crate::support::use_internal_styles::use_internal_styles;
 use crate::support::id::use_id;
 use crate::support::primitive::{Primitive, compose_callbacks, prop_or, prop_or_default};
 use crate::support::use_controllable_state::{UseControllableStateParams, use_controllable_state};
@@ -147,6 +148,7 @@ fn RovingFocusGroupImpl(
 
     let group_ref = AnyNodeRef::new();
     let composed_refs = use_composed_refs(vec![node_ref, group_ref]);
+    let composed_refs = use_internal_styles(composed_refs, &[("outline", "none")]);
     let direction = use_direction(dir);
     let (current_tab_stop_id, set_current_tab_stop_id) =
         use_controllable_state(UseControllableStateParams {
@@ -238,7 +240,6 @@ fn RovingFocusGroupImpl(
                         false => "0",
                     }
                     attr:data-orientation=move || orientation.get().map(|o| o.to_string())
-                    attr:style="outline: none"
                     on:mousedown=compose_callbacks(on_mouse_down.flatten(), Some(Callback::new(move |_: ev::MouseEvent| {
                         let _ = is_click_focus.try_set(true);
                     })), None)

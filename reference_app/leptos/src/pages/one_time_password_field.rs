@@ -43,7 +43,10 @@ pub fn OneTimePasswordFieldPage() -> impl IntoView {
         if let Some(form) = form
             && let Ok(form_data) = web_sys::FormData::new_with_form(&form)
         {
-            let code = form_data.get("uncontrolled-code").as_string().unwrap_or_default();
+            let code = form_data
+                .get("uncontrolled-code")
+                .as_string()
+                .unwrap_or_default();
             set_uncontrolled_submitted.set(format!("Submitted: {code}"));
         }
     };

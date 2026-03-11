@@ -97,12 +97,6 @@ pub fn OneTimePasswordFieldInput(
             .map(|ctx| ctx.has_tab_stop.get())
             .unwrap_or(false)
     });
-    let is_current_tab_stop_ctx = Signal::derive(move || {
-        use_context::<RovingFocusGroupItemContext>()
-            .map(|ctx| ctx.is_current_tab_stop.get())
-            .unwrap_or(false)
-    });
-
     view! {
         <CollectionItemSlot item_data_type=ITEM_DATA_PHANTOM item_data=item_data>
             <RovingFocusGroupItem
@@ -122,7 +116,6 @@ pub fn OneTimePasswordFieldInput(
                     collection_size=collection_size
                     aria_label=aria_label
                     has_tab_stop=has_tab_stop
-                    is_current_tab_stop_ctx=is_current_tab_stop_ctx
                     on_invalid_change=on_invalid_change
                     on_focus=on_focus
                     on_cut=on_cut
@@ -152,7 +145,6 @@ fn OneTimePasswordFieldInputInner(
     collection_size: Signal<usize>,
     aria_label: Signal<String>,
     has_tab_stop: Signal<bool>,
-    is_current_tab_stop_ctx: Signal<bool>,
     on_invalid_change: Option<Callback<String>>,
     on_focus: Option<Callback<ev::FocusEvent>>,
     on_cut: Option<Callback<ev::ClipboardEvent>>,
@@ -162,9 +154,15 @@ fn OneTimePasswordFieldInputInner(
     on_pointer_down: Option<Callback<ev::PointerEvent>>,
     #[prop(into, optional)] as_child: MaybeProp<bool>,
 ) -> impl IntoView {
+    let is_current_tab_stop = Signal::derive(move || {
+        use_context::<RovingFocusGroupItemContext>()
+            .map(|ctx| ctx.is_current_tab_stop.get())
+            .unwrap_or(false)
+    });
+
     let supports_auto_complete = Signal::derive(move || {
         if has_tab_stop.get() {
-            is_current_tab_stop_ctx.get()
+            is_current_tab_stop.get()
         } else {
             resolved_index.get() == 0
         }

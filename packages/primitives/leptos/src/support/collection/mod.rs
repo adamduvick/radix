@@ -143,21 +143,8 @@ pub fn CollectionItemSlot<ItemData: Clone + Debug + Send + Sync + 'static>(
 
     children
         .with_value(|children| children())
-        .add_any_attr(leptos::attr::custom::custom_attribute(
-            "data-radix-collection-item",
-            "",
-        ))
+        .add_any_attr(leptos::attr::custom::custom_attribute(ITEM_DATA_ATTR, ""))
         .add_any_attr(any_node_ref::<html::Div, _>(composed_ref))
-}
-
-fn node_list_to_vec(node_list: web_sys::NodeList) -> Vec<web_sys::Node> {
-    let mut nodes = vec![];
-    for n in 0..node_list.length() {
-        if let Some(node) = node_list.item(n) {
-            nodes.push(node);
-        }
-    }
-    nodes
 }
 
 pub fn use_collection<ItemData: Clone + Send + Sync + 'static>()
@@ -166,40 +153,31 @@ pub fn use_collection<ItemData: Clone + Send + Sync + 'static>()
 
     let get_items = move || {
         let collection_node = context.collection_ref.get_untracked();
-        if let Some(collection_node) = collection_node {
-            let element: &web_sys::Element = (*collection_node).unchecked_ref();
-            let ordered_nodes = node_list_to_vec(
-                element
-                    .query_selector_all(format!("[{ITEM_DATA_ATTR}]").as_str())
-                    .expect("Node should be queried."),
-            );
-
+        if collection_node.is_some() {
             let mut ordered_items = context
                 .item_map
                 .get_untracked()
                 .into_values()
                 .collect::<Vec<_>>();
-            ordered_items.sort_by(|a, b| {
-                let index_a = ordered_nodes.iter().position(|node| {
-                    a.r#ref
-                        .get_untracked()
-                        .map(|el| {
-                            let n: &web_sys::Node = (*el).unchecked_ref();
-                            node == n
-                        })
-                        .unwrap_or(false)
-                });
-                let index_b = ordered_nodes.iter().position(|node| {
-                    b.r#ref
-                        .get_untracked()
-                        .map(|el| {
-                            let n: &web_sys::Node = (*el).unchecked_ref();
-                            node == n
-                        })
-                        .unwrap_or(false)
-                });
 
-                index_a.cmp(&index_b)
+            ordered_items.sort_by(|a, b| {
+                match (a.r#ref.get_untracked(), b.r#ref.get_untracked()) {
+                    (Some(el_a), Some(el_b)) => {
+                        let node_a: &web_sys::Node = (*el_a).unchecked_ref();
+                        let node_b: &web_sys::Node = (*el_b).unchecked_ref();
+                        let position = node_a.compare_document_position(node_b);
+                        if position & web_sys::Node::DOCUMENT_POSITION_FOLLOWING != 0 {
+                            std::cmp::Ordering::Less
+                        } else if position & web_sys::Node::DOCUMENT_POSITION_PRECEDING != 0 {
+                            std::cmp::Ordering::Greater
+                        } else {
+                            std::cmp::Ordering::Equal
+                        }
+                    }
+                    (Some(_), None) => std::cmp::Ordering::Less,
+                    (None, Some(_)) => std::cmp::Ordering::Greater,
+                    (None, None) => std::cmp::Ordering::Equal,
+                }
             });
 
             ordered_items

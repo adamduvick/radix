@@ -59,7 +59,9 @@ pub fn OneTimePasswordFieldPage() -> impl IntoView {
                 attr:class="otp-root"
                 attr:data-testid="main-otp-root"
                 value=Signal::derive(move || Some(value.get()))
-                on_value_change=Callback::new(move |v: String| set_value.set(v))
+                on_value_change=Callback::new(move |v: String| {
+                    set_value.set(v);
+                })
                 disabled=Signal::derive(move || disabled.get())
                 read_only=Signal::derive(move || read_only.get())
                 orientation=Signal::derive(move || if vertical.get() { Orientation::Vertical } else { Orientation::Horizontal })

@@ -2,7 +2,12 @@ use std::marker::PhantomData;
 use std::{collections::HashMap, fmt::Debug};
 
 use crate::support::compose_refs::use_composed_refs;
-use leptos::{html, prelude::*};
+use leptos::{
+    context::Provider,
+    html,
+    prelude::*,
+    tachys::html::node_ref::NodeRefContainer,
+};
 use leptos_node_ref::{AnyNodeRef, any_node_ref};
 use nanoid::nanoid;
 use send_wrapper::SendWrapper;
@@ -71,16 +76,16 @@ pub fn CollectionProvider<ItemData: Clone + Send + Sync + 'static>(
     item_data_type: Option<PhantomData<ItemData>>,
     children: ChildrenFn,
 ) -> impl IntoView {
-    let children = StoredValue::new(children);
-
     let context_value = CollectionContextValue::<ItemData> {
         collection_ref: AnyNodeRef::new(),
         item_map: RwSignal::new(HashMap::new()),
     };
 
-    provide_context(context_value);
-
-    children.with_value(|children| children())
+    view! {
+        <Provider value=context_value>
+            {children()}
+        </Provider>
+    }
 }
 
 const ITEM_DATA_ATTR: &str = "data-radix-collection-item";
@@ -97,6 +102,14 @@ pub fn CollectionSlot<ItemData: Clone + Send + Sync + 'static>(
 
     let context = expect_context::<CollectionContextValue<ItemData>>();
     let composed_ref = use_composed_refs(vec![node_ref, context.collection_ref]);
+
+    // Fallback: if node_ref is set externally (e.g. by an inner component's own
+    // node_ref mechanism through deep as_child chains), propagate to collection_ref.
+    Effect::new(move |_| {
+        if let Some(el) = node_ref.get() {
+            NodeRefContainer::<html::Div>::load(context.collection_ref, &el);
+        }
+    });
 
     children
         .with_value(|children| children())
@@ -135,6 +148,15 @@ pub fn CollectionItemSlot<ItemData: Clone + Debug + Send + Sync + 'static>(
         }
     });
 
+    // Fallback: if node_ref is set externally (e.g. by an inner component's own
+    // node_ref mechanism through deep as_child chains), propagate to item_ref
+    // so the item_map entry has the actual DOM element.
+    Effect::new(move |_| {
+        if let Some(el) = node_ref.get() {
+            NodeRefContainer::<html::Div>::load(item_ref, &el);
+        }
+    });
+
     Owner::on_cleanup(move || {
         context.item_map.update(|item_map| {
             item_map.remove(&id_for_cleanup);
@@ -152,8 +174,7 @@ pub fn use_collection<ItemData: Clone + Send + Sync + 'static>()
     let context = expect_context::<CollectionContextValue<ItemData>>();
 
     let get_items = move || {
-        let collection_node = context.collection_ref.get_untracked();
-        if collection_node.is_some() {
+        if context.collection_ref.get_untracked().is_some() {
             let mut ordered_items = context
                 .item_map
                 .get_untracked()

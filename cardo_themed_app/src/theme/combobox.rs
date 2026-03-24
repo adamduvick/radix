@@ -25,6 +25,14 @@ const EMPTY_CLASS: &str = "py-6 text-center text-sm text-muted-foreground";
 
 const LABEL_CLASS: &str = "px-2 py-1.5 text-xs text-muted-foreground";
 
+const CHIPS_CLASS: &str = "flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border border-input bg-transparent px-2.5 py-1.5 text-sm shadow-xs transition-[color,box-shadow] focus-within:focus-ring dark:bg-input/30";
+
+const CHIP_CLASS: &str = "flex h-5.5 items-center gap-1 rounded-sm bg-muted px-1.5 text-xs font-medium text-foreground";
+
+const CHIP_REMOVE_CLASS: &str = "inline-flex items-center justify-center size-3.5 rounded-sm text-muted-foreground hover:text-foreground";
+
+type ComboboxValues = Vec<String>;
+
 // ---------------------------------------------------------------------------
 // Components
 // ---------------------------------------------------------------------------
@@ -189,6 +197,88 @@ pub fn ThemedComboboxLabel(children: ChildrenFn) -> impl IntoView {
     }
 }
 
+/// Multi-select combobox — pass `multiple=true` to ThemedCombobox.
+/// Use ThemedComboboxChips as the anchor instead of ThemedComboboxAnchor.
+#[component]
+pub fn ThemedComboboxMulti(
+    #[prop(into, optional)] open: MaybeProp<bool>,
+    #[prop(into, optional)] default_open: MaybeProp<bool>,
+    #[prop(into, optional)] on_open_change: Option<Callback<bool>>,
+    #[prop(into, optional)] values: MaybeProp<ComboboxValues>,
+    #[prop(into, optional)] default_values: MaybeProp<ComboboxValues>,
+    #[prop(into, optional)] on_values_change: Option<Callback<ComboboxValues>>,
+    #[prop(into, optional)] input_value: MaybeProp<String>,
+    #[prop(into, optional)] default_input_value: MaybeProp<String>,
+    #[prop(into, optional)] on_input_value_change: Option<Callback<String>>,
+    #[prop(into, optional)] disabled: MaybeProp<bool>,
+    children: ChildrenFn,
+) -> impl IntoView {
+    view! {
+        <Combobox
+            multiple=true
+            open=open
+            default_open=default_open
+            on_open_change=move |val: bool| {
+                if let Some(cb) = on_open_change {
+                    cb.run(val);
+                }
+            }
+            values=values
+            default_values=default_values
+            on_values_change=move |val: ComboboxValues| {
+                if let Some(cb) = on_values_change {
+                    cb.run(val);
+                }
+            }
+            input_value=input_value
+            default_input_value=default_input_value
+            on_input_value_change=move |val: String| {
+                if let Some(cb) = on_input_value_change {
+                    cb.run(val);
+                }
+            }
+            disabled=disabled
+        >
+            {children()}
+        </Combobox>
+    }
+}
+
+#[component]
+pub fn ThemedComboboxChips(children: ChildrenFn) -> impl IntoView {
+    let class = StoredValue::new(CHIPS_CLASS);
+    let children = StoredValue::new(children);
+
+    view! {
+        <ComboboxAnchor>
+            <ComboboxChips attr:class=class.get_value()>
+                {children.with_value(|children| children())}
+            </ComboboxChips>
+        </ComboboxAnchor>
+    }
+}
+
+#[component]
+pub fn ThemedComboboxChip(
+    #[prop(into)] value: String,
+    children: ChildrenFn,
+) -> impl IntoView {
+    let class = StoredValue::new(CHIP_CLASS);
+    let remove_class = StoredValue::new(CHIP_REMOVE_CLASS);
+    let remove_value = StoredValue::new(value.clone());
+    let chip_value = StoredValue::new(value);
+    let children = StoredValue::new(children);
+
+    view! {
+        <ComboboxChip attr:class=class.get_value() value=chip_value.get_value()>
+            {children.with_value(|children| children())}
+            <ComboboxChipRemove attr:class=remove_class.get_value() value=remove_value.get_value()>
+                <XIcon />
+            </ComboboxChipRemove>
+        </ComboboxChip>
+    }
+}
+
 // ---------------------------------------------------------------------------
 // Icons
 // ---------------------------------------------------------------------------
@@ -207,6 +297,25 @@ fn ChevronDownIcon() -> impl IntoView {
             stroke-linejoin="round"
         >
             <path d="m6 9 6 6 6-6" />
+        </svg>
+    }
+}
+
+#[component]
+fn XIcon() -> impl IntoView {
+    view! {
+        <svg
+            class="size-3"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
         </svg>
     }
 }

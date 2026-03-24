@@ -8,6 +8,9 @@ const FRAMEWORKS: &[(&str, &str)] = &[
     ("angular", "Angular"),
     ("svelte", "Svelte"),
     ("leptos", "Leptos"),
+    ("solid", "Solid"),
+    ("qwik", "Qwik"),
+    ("next", "Next.js"),
 ];
 
 #[component]
@@ -17,6 +20,19 @@ pub fn ComboboxPage() -> impl IntoView {
 
     let filtered = Memo::new(move |_| {
         let query = search.get().to_lowercase();
+        FRAMEWORKS
+            .iter()
+            .filter(|(_, label)| query.is_empty() || label.to_lowercase().contains(&query))
+            .copied()
+            .collect::<Vec<_>>()
+    });
+
+    // Multi-select state
+    let (multi_search, set_multi_search) = signal(String::new());
+    let (selected, set_selected) = signal::<Vec<String>>(vec![]);
+
+    let multi_filtered = Memo::new(move |_| {
+        let query = multi_search.get().to_lowercase();
         FRAMEWORKS
             .iter()
             .filter(|(_, label)| query.is_empty() || label.to_lowercase().contains(&query))
@@ -34,7 +50,7 @@ pub fn ComboboxPage() -> impl IntoView {
             </div>
 
             <section class="space-y-4">
-                <h2 class="text-lg font-semibold text-foreground">"Framework Picker"</h2>
+                <h2 class="text-lg font-semibold text-foreground">"Single Select"</h2>
                 <p class="text-sm text-muted-foreground">
                     "Selected: "
                     {move || value.get().unwrap_or_else(|| "None".to_string())}
@@ -79,6 +95,75 @@ pub fn ComboboxPage() -> impl IntoView {
                             </ThemedComboboxViewport>
                         </ThemedComboboxContent>
                     </ThemedCombobox>
+                </div>
+            </section>
+
+            <section class="space-y-4">
+                <h2 class="text-lg font-semibold text-foreground">"Multi Select"</h2>
+                <p class="text-sm text-muted-foreground">
+                    "Selected: "
+                    {move || {
+                        let vals = selected.get();
+                        if vals.is_empty() {
+                            "None".to_string()
+                        } else {
+                            vals.join(", ")
+                        }
+                    }}
+                </p>
+                <div class="w-[360px]">
+                    <ThemedComboboxMulti
+                        values=MaybeProp::derive(move || Some(selected.get()))
+                        on_values_change=Callback::new(move |vals: Vec<String>| {
+                            set_selected.set(vals);
+                        })
+                        input_value=MaybeProp::derive(move || Some(multi_search.get()))
+                        on_input_value_change=Callback::new(move |val: String| {
+                            set_multi_search.set(val);
+                        })
+                    >
+                        <ThemedComboboxChips>
+                            {move || {
+                                selected.get().into_iter().map(|val| {
+                                    let display: &'static str = FRAMEWORKS.iter()
+                                        .find(|(v, _)| *v == val)
+                                        .map(|(_, l)| *l)
+                                        .unwrap_or("?");
+                                    view! {
+                                        <ThemedComboboxChip value=val>
+                                            {display}
+                                        </ThemedComboboxChip>
+                                    }
+                                }).collect_view()
+                            }}
+                            <ThemedComboboxInput placeholder="Search frameworks..." />
+                            <ThemedComboboxTrigger />
+                        </ThemedComboboxChips>
+                        <ThemedComboboxContent>
+                            <ThemedComboboxViewport>
+                                {move || {
+                                    let items = multi_filtered.get();
+                                    if items.is_empty() {
+                                        view! {
+                                            <ThemedComboboxEmpty>"No framework found."</ThemedComboboxEmpty>
+                                        }.into_any()
+                                    } else {
+                                        items
+                                            .into_iter()
+                                            .map(|(val, label)| {
+                                                view! {
+                                                    <ThemedComboboxItem value=val.to_string()>
+                                                        {label}
+                                                    </ThemedComboboxItem>
+                                                }
+                                            })
+                                            .collect_view()
+                                            .into_any()
+                                    }
+                                }}
+                            </ThemedComboboxViewport>
+                        </ThemedComboboxContent>
+                    </ThemedComboboxMulti>
                 </div>
             </section>
         </div>

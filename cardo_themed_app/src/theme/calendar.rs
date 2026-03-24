@@ -38,31 +38,51 @@ pub fn ThemedCalendar(
     #[prop(into, optional)] disabled: MaybeProp<bool>,
     children: ChildrenFn,
 ) -> impl IntoView {
+    // Calendar uses on_value_change.is_some() to decide controlled vs uncontrolled.
+    // We must NOT pass the callback when the user doesn't provide one, otherwise
+    // uncontrolled mode (basic calendar) won't update selection on click.
+    // on_month_change doesn't affect controlledness so we always forward it.
+    let children = StoredValue::new(children);
     let class = StoredValue::new(ROOT_CLASS);
 
-    view! {
-        <Calendar
-            attr:class=class.get_value()
-            value=value
-            default_value=default_value
-            on_value_change=move |val: NaiveDate| {
-                if let Some(cb) = on_value_change {
-                    cb.run(val);
+    if let Some(value_cb) = on_value_change {
+        view! {
+            <Calendar
+                attr:class=class.get_value()
+                value=value
+                default_value=default_value
+                on_value_change=value_cb
+                month=month
+                default_month=default_month
+                on_month_change=move |val: NaiveDate| {
+                    if let Some(cb) = on_month_change { cb.run(val); }
                 }
-            }
-            month=month
-            default_month=default_month
-            on_month_change=move |val: NaiveDate| {
-                if let Some(cb) = on_month_change {
-                    cb.run(val);
+                min_date=min_date
+                max_date=max_date
+                disabled=disabled
+            >
+                {children.with_value(|c| c())}
+            </Calendar>
+        }
+        .into_any()
+    } else {
+        view! {
+            <Calendar
+                attr:class=class.get_value()
+                default_value=default_value
+                month=month
+                default_month=default_month
+                on_month_change=move |val: NaiveDate| {
+                    if let Some(cb) = on_month_change { cb.run(val); }
                 }
-            }
-            min_date=min_date
-            max_date=max_date
-            disabled=disabled
-        >
-            {children()}
-        </Calendar>
+                min_date=min_date
+                max_date=max_date
+                disabled=disabled
+            >
+                {children.with_value(|c| c())}
+            </Calendar>
+        }
+        .into_any()
     }
 }
 

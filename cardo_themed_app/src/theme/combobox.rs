@@ -27,7 +27,7 @@ const LABEL_CLASS: &str = "px-2 py-1.5 text-xs text-muted-foreground";
 
 const CHIPS_CLASS: &str = "flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border border-input bg-transparent px-2.5 py-1.5 text-sm shadow-xs transition-[color,box-shadow] focus-within:focus-ring dark:bg-input/30";
 
-const CHIP_CLASS: &str = "flex h-5.5 items-center gap-1 rounded-sm bg-muted px-1.5 text-xs font-medium text-foreground";
+const CHIP_CLASS: &str = "flex h-5.5 items-center gap-1 rounded-sm bg-muted px-1.5 text-xs font-medium text-foreground data-[highlighted]:ring-2 data-[highlighted]:ring-ring/50";
 
 const CHIP_REMOVE_CLASS: &str = "inline-flex items-center justify-center size-3.5 rounded-sm text-muted-foreground hover:text-foreground";
 

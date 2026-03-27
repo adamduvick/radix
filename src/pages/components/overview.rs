@@ -17,6 +17,8 @@ pub fn ComponentsOverview() -> impl IntoView {
             <ComponentGroup
                 title="Layout"
                 items=vec![
+                    ("Aspect Ratio", "/docs/components/aspect-ratio", "Displays content within a desired width-to-height ratio."),
+                    ("Scroll Area", "/docs/components/scroll-area", "Custom scrollable area with styled scrollbars."),
                     ("Separator", "/docs/components/separator", "Visually or semantically separates content."),
                 ]
             />
@@ -24,12 +26,18 @@ pub fn ComponentsOverview() -> impl IntoView {
             <ComponentGroup
                 title="Inputs"
                 items=vec![
+                    ("Calendar", "/docs/components/calendar", "A date picker for selecting a single date."),
                     ("Checkbox", "/docs/components/checkbox", "A control that toggles between checked and unchecked."),
+                    ("Combobox", "/docs/components/combobox", "An input with typeahead filtering and a popup listbox."),
+                    ("Form", "/docs/components/form", "Form with built-in validation and accessible error messages."),
                     ("Label", "/docs/components/label", "Accessible label for form controls."),
+                    ("OTP Field", "/docs/components/otp-field", "Segmented input for one-time verification codes."),
+                    ("Password Toggle Field", "/docs/components/password-toggle-field", "Password input with a visibility toggle."),
                     ("Radio Group", "/docs/components/radio-group", "A set of mutually exclusive options."),
                     ("Select", "/docs/components/select", "A dropdown for selecting from a list of options."),
                     ("Slider", "/docs/components/slider", "A range input for selecting numeric values."),
                     ("Switch", "/docs/components/switch", "A toggle between on and off states."),
+                    ("Time Field", "/docs/components/time-field", "A segmented input for entering time values."),
                     ("Toggle", "/docs/components/toggle", "A two-state button that can be on or off."),
                     ("Toggle Group", "/docs/components/toggle-group", "A group of toggle buttons."),
                 ]
@@ -39,11 +47,22 @@ pub fn ComponentsOverview() -> impl IntoView {
                 title="Overlays"
                 items=vec![
                     ("Alert Dialog", "/docs/components/alert-dialog", "A modal dialog that interrupts the user for confirmation."),
+                    ("Context Menu", "/docs/components/context-menu", "A menu that appears on right-click."),
                     ("Dialog", "/docs/components/dialog", "A modal or non-modal overlay window."),
                     ("Dropdown Menu", "/docs/components/dropdown-menu", "A menu triggered by a button."),
+                    ("Hover Card", "/docs/components/hover-card", "Rich content on hover, like a profile preview."),
                     ("Popover", "/docs/components/popover", "Floating content anchored to a trigger."),
                     ("Toast", "/docs/components/toast", "A brief, auto-dismissing notification."),
                     ("Tooltip", "/docs/components/tooltip", "A popup label on hover or focus."),
+                ]
+            />
+
+            <ComponentGroup
+                title="Navigation"
+                items=vec![
+                    ("Menubar", "/docs/components/menubar", "A horizontal menu bar with dropdown menus."),
+                    ("Navigation Menu", "/docs/components/navigation-menu", "Site navigation with expandable content panels."),
+                    ("Toolbar", "/docs/components/toolbar", "Container for grouping buttons, links, and toggles."),
                 ]
             />
 
@@ -61,6 +80,14 @@ pub fn ComponentsOverview() -> impl IntoView {
                 items=vec![
                     ("Avatar", "/docs/components/avatar", "An image element with a fallback."),
                     ("Progress", "/docs/components/progress", "Displays progress toward completion."),
+                ]
+            />
+
+            <ComponentGroup
+                title="Utilities"
+                items=vec![
+                    ("Accessible Icon", "/docs/components/accessible-icon", "Makes icons accessible with a screen reader label."),
+                    ("Menu", "/docs/components/menu", "Low-level menu primitive used by DropdownMenu, ContextMenu, and Menubar."),
                 ]
             />
         </div>

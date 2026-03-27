@@ -12,4 +12,5 @@ leptos_router = "0.8.0"
 log = "0.4.22"
 # For development, use a path dependency. Switch to git/crates.io for deployment.
 pith-ui = { path = "../rust-radix/packages/primitives/leptos", features = ["all"] }
+chrono = { version = "0.4", features = ["wasmbind"] }
 web-sys = { version = "0.3.72", features = ["KeyboardEvent"] }

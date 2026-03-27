@@ -52,18 +52,26 @@ const NAV_GROUPS: &[NavGroup] = &[
     NavGroup {
         title: "Layout",
         items: &[
+            NavItem { label: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
+            NavItem { label: "Scroll Area", href: "/docs/components/scroll-area" },
             NavItem { label: "Separator", href: "/docs/components/separator" },
         ],
     },
     NavGroup {
         title: "Inputs",
         items: &[
+            NavItem { label: "Calendar", href: "/docs/components/calendar" },
             NavItem { label: "Checkbox", href: "/docs/components/checkbox" },
+            NavItem { label: "Combobox", href: "/docs/components/combobox" },
+            NavItem { label: "Form", href: "/docs/components/form" },
             NavItem { label: "Label", href: "/docs/components/label" },
+            NavItem { label: "OTP Field", href: "/docs/components/otp-field" },
+            NavItem { label: "Password Toggle Field", href: "/docs/components/password-toggle-field" },
             NavItem { label: "Radio Group", href: "/docs/components/radio-group" },
             NavItem { label: "Select", href: "/docs/components/select" },
             NavItem { label: "Slider", href: "/docs/components/slider" },
             NavItem { label: "Switch", href: "/docs/components/switch" },
+            NavItem { label: "Time Field", href: "/docs/components/time-field" },
             NavItem { label: "Toggle", href: "/docs/components/toggle" },
             NavItem { label: "Toggle Group", href: "/docs/components/toggle-group" },
         ],
@@ -72,11 +80,21 @@ const NAV_GROUPS: &[NavGroup] = &[
         title: "Overlays",
         items: &[
             NavItem { label: "Alert Dialog", href: "/docs/components/alert-dialog" },
+            NavItem { label: "Context Menu", href: "/docs/components/context-menu" },
             NavItem { label: "Dialog", href: "/docs/components/dialog" },
             NavItem { label: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
+            NavItem { label: "Hover Card", href: "/docs/components/hover-card" },
             NavItem { label: "Popover", href: "/docs/components/popover" },
             NavItem { label: "Toast", href: "/docs/components/toast" },
             NavItem { label: "Tooltip", href: "/docs/components/tooltip" },
+        ],
+    },
+    NavGroup {
+        title: "Navigation",
+        items: &[
+            NavItem { label: "Menubar", href: "/docs/components/menubar" },
+            NavItem { label: "Navigation Menu", href: "/docs/components/navigation-menu" },
+            NavItem { label: "Toolbar", href: "/docs/components/toolbar" },
         ],
     },
     NavGroup {
@@ -92,6 +110,13 @@ const NAV_GROUPS: &[NavGroup] = &[
         items: &[
             NavItem { label: "Avatar", href: "/docs/components/avatar" },
             NavItem { label: "Progress", href: "/docs/components/progress" },
+        ],
+    },
+    NavGroup {
+        title: "Utilities",
+        items: &[
+            NavItem { label: "Accessible Icon", href: "/docs/components/accessible-icon" },
+            NavItem { label: "Menu", href: "/docs/components/menu" },
         ],
     },
 ];

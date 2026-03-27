@@ -73,25 +73,40 @@ pub fn Home() -> impl IntoView {
                         <p class="mt-4 text-lg text-slate-600">"From simple toggles to complex comboboxes, every component you need."</p>
                     </div>
                     <div class="mx-auto mt-12 grid max-w-5xl gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                        <ComponentCard name="Accessible Icon" href="/docs/components/accessible-icon" />
                         <ComponentCard name="Accordion" href="/docs/components/accordion" />
                         <ComponentCard name="Alert Dialog" href="/docs/components/alert-dialog" />
+                        <ComponentCard name="Aspect Ratio" href="/docs/components/aspect-ratio" />
                         <ComponentCard name="Avatar" href="/docs/components/avatar" />
+                        <ComponentCard name="Calendar" href="/docs/components/calendar" />
                         <ComponentCard name="Checkbox" href="/docs/components/checkbox" />
                         <ComponentCard name="Collapsible" href="/docs/components/collapsible" />
+                        <ComponentCard name="Combobox" href="/docs/components/combobox" />
+                        <ComponentCard name="Context Menu" href="/docs/components/context-menu" />
                         <ComponentCard name="Dialog" href="/docs/components/dialog" />
                         <ComponentCard name="Dropdown Menu" href="/docs/components/dropdown-menu" />
+                        <ComponentCard name="Form" href="/docs/components/form" />
+                        <ComponentCard name="Hover Card" href="/docs/components/hover-card" />
                         <ComponentCard name="Label" href="/docs/components/label" />
+                        <ComponentCard name="Menu" href="/docs/components/menu" />
+                        <ComponentCard name="Menubar" href="/docs/components/menubar" />
+                        <ComponentCard name="Navigation Menu" href="/docs/components/navigation-menu" />
+                        <ComponentCard name="OTP Field" href="/docs/components/otp-field" />
+                        <ComponentCard name="Password Toggle" href="/docs/components/password-toggle-field" />
                         <ComponentCard name="Popover" href="/docs/components/popover" />
                         <ComponentCard name="Progress" href="/docs/components/progress" />
                         <ComponentCard name="Radio Group" href="/docs/components/radio-group" />
+                        <ComponentCard name="Scroll Area" href="/docs/components/scroll-area" />
                         <ComponentCard name="Select" href="/docs/components/select" />
                         <ComponentCard name="Separator" href="/docs/components/separator" />
                         <ComponentCard name="Slider" href="/docs/components/slider" />
                         <ComponentCard name="Switch" href="/docs/components/switch" />
                         <ComponentCard name="Tabs" href="/docs/components/tabs" />
+                        <ComponentCard name="Time Field" href="/docs/components/time-field" />
                         <ComponentCard name="Toast" href="/docs/components/toast" />
                         <ComponentCard name="Toggle" href="/docs/components/toggle" />
                         <ComponentCard name="Toggle Group" href="/docs/components/toggle-group" />
+                        <ComponentCard name="Toolbar" href="/docs/components/toolbar" />
                         <ComponentCard name="Tooltip" href="/docs/components/tooltip" />
                     </div>
                 </div>

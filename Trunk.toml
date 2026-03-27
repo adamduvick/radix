@@ -3,8 +3,14 @@ ignore = ["style/output.css"]
 
 [build]
 target = "index.html"
+# Public URL for GitHub Pages (user site serves from root)
+public_url = "/"
+
+[tools]
+# Automatically download and run wasm-opt on release builds
+wasm_opt = "version_119"
 
 [[hooks]]
 stage = "pre_build"
 command = "sh"
-command_arguments = ["-c", "npx tailwindcss -i style/input.css -o style/output.css"]
+command_arguments = ["-c", "npx tailwindcss -i style/input.css -o style/output.css --minify"]

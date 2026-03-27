@@ -1,0 +1,146 @@
+use leptos::prelude::*;
+use leptos_router::{
+    components::{A, Outlet},
+    hooks::use_location,
+};
+#[component]
+pub fn SiteHeader() -> impl IntoView {
+    view! {
+        <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-sm">
+            <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+                <A href="/" attr:class="flex items-center gap-2 text-xl font-bold text-slate-900 no-underline hover:text-accent-600 transition-colors">
+                    "Pith UI"
+                </A>
+                <nav class="flex items-center gap-6">
+                    <A href="/docs/getting-started" attr:class="text-sm font-medium text-slate-600 no-underline hover:text-slate-900 transition-colors">
+                        "Docs"
+                    </A>
+                    <A href="/docs/components" attr:class="text-sm font-medium text-slate-600 no-underline hover:text-slate-900 transition-colors">
+                        "Components"
+                    </A>
+                    <a
+                        href="https://github.com/pith-ui/pith-ui"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-sm font-medium text-slate-600 no-underline hover:text-slate-900 transition-colors"
+                    >
+                        "GitHub"
+                    </a>
+                </nav>
+            </div>
+        </header>
+    }
+}
+
+struct NavItem {
+    label: &'static str,
+    href: &'static str,
+}
+
+struct NavGroup {
+    title: &'static str,
+    items: &'static [NavItem],
+}
+
+const NAV_GROUPS: &[NavGroup] = &[
+    NavGroup {
+        title: "Getting Started",
+        items: &[
+            NavItem { label: "Introduction", href: "/docs/getting-started" },
+        ],
+    },
+    NavGroup {
+        title: "Layout",
+        items: &[
+            NavItem { label: "Separator", href: "/docs/components/separator" },
+        ],
+    },
+    NavGroup {
+        title: "Inputs",
+        items: &[
+            NavItem { label: "Checkbox", href: "/docs/components/checkbox" },
+            NavItem { label: "Label", href: "/docs/components/label" },
+            NavItem { label: "Radio Group", href: "/docs/components/radio-group" },
+            NavItem { label: "Select", href: "/docs/components/select" },
+            NavItem { label: "Slider", href: "/docs/components/slider" },
+            NavItem { label: "Switch", href: "/docs/components/switch" },
+            NavItem { label: "Toggle", href: "/docs/components/toggle" },
+            NavItem { label: "Toggle Group", href: "/docs/components/toggle-group" },
+        ],
+    },
+    NavGroup {
+        title: "Overlays",
+        items: &[
+            NavItem { label: "Alert Dialog", href: "/docs/components/alert-dialog" },
+            NavItem { label: "Dialog", href: "/docs/components/dialog" },
+            NavItem { label: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
+            NavItem { label: "Popover", href: "/docs/components/popover" },
+            NavItem { label: "Toast", href: "/docs/components/toast" },
+            NavItem { label: "Tooltip", href: "/docs/components/tooltip" },
+        ],
+    },
+    NavGroup {
+        title: "Disclosure",
+        items: &[
+            NavItem { label: "Accordion", href: "/docs/components/accordion" },
+            NavItem { label: "Collapsible", href: "/docs/components/collapsible" },
+            NavItem { label: "Tabs", href: "/docs/components/tabs" },
+        ],
+    },
+    NavGroup {
+        title: "Data Display",
+        items: &[
+            NavItem { label: "Avatar", href: "/docs/components/avatar" },
+            NavItem { label: "Progress", href: "/docs/components/progress" },
+        ],
+    },
+];
+
+#[component]
+pub fn DocsLayout() -> impl IntoView {
+    let location = use_location();
+
+    view! {
+        <div class="mx-auto flex max-w-7xl">
+            <aside class="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 overflow-y-auto border-r border-slate-200 px-4 py-8 md:block">
+                <nav class="space-y-6">
+                    {NAV_GROUPS.iter().map(|group| {
+                        view! {
+                            <div>
+                                <h3 class="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                                    {group.title}
+                                </h3>
+                                <ul class="space-y-1">
+                                    {group.items.iter().map(|item| {
+                                        let href = item.href;
+                                        let label = item.label;
+                                        let is_active = move || location.pathname.get() == href;
+                                        view! {
+                                            <li>
+                                                <A
+                                                    href=href
+                                                    attr:class=move || {
+                                                        if is_active() {
+                                                            "block rounded-md bg-accent-50 px-3 py-1.5 text-sm font-medium text-accent-700 no-underline"
+                                                        } else {
+                                                            "block rounded-md px-3 py-1.5 text-sm text-slate-600 no-underline hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                                                        }
+                                                    }
+                                                >
+                                                    {label}
+                                                </A>
+                                            </li>
+                                        }
+                                    }).collect_view()}
+                                </ul>
+                            </div>
+                        }
+                    }).collect_view()}
+                </nav>
+            </aside>
+            <main class="min-w-0 flex-1 px-8 py-8 lg:px-12">
+                <Outlet />
+            </main>
+        </div>
+    }
+}

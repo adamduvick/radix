@@ -1,0 +1,15 @@
+[package]
+name = "pith-ui-site"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+console_error_panic_hook = "0.1.7"
+console_log = "1.0.0"
+leptos = { version = "0.8.0", features = ["csr"] }
+leptos_router = "0.8.0"
+log = "0.4.22"
+# For development, use a path dependency. Switch to git/crates.io for deployment.
+pith-ui = { path = "../rust-radix/packages/primitives/leptos", features = ["all"] }
+web-sys = { version = "0.3.72", features = ["KeyboardEvent"] }

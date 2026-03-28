@@ -8,6 +8,7 @@ module.exports = {
                 mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
             },
             colors: {
+                code: '#2d2d2d', /* must match Prism theme background */
                 accent: {
                     50: '#eef2ff',
                     100: '#e0e7ff',

@@ -12,6 +12,8 @@ leptos = { version = "0.8.0", features = ["csr"] }
 leptos_router = "0.8.0"
 log = "0.4.22"
 pith-ui = { git = "https://github.com/pith-ui/pith-ui.git", branch = "main", features = ["all"] }
+js-sys = "0.3"
+wasm-bindgen = "0.2"
 web-sys = { version = "0.3.72", features = ["KeyboardEvent"] }
 
 [profile.release]

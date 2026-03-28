@@ -44,16 +44,6 @@ const TAB_TRIGGER: &str = "px-3 py-1.5 text-sm font-medium rounded-md transition
     text-slate-500 hover:text-slate-700 \
     data-[state=active]:bg-white data-[state=active]:text-accent-700 data-[state=active]:shadow-sm";
 
-/// A container for interactive component demos.
-#[component]
-pub fn DemoSection(children: Children) -> impl IntoView {
-    view! {
-        <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-            {children()}
-        </div>
-    }
-}
-
 /// A tabbed demo viewer: "Preview" renders the live component, "Code" shows the source.
 #[component]
 pub fn DemoTabs(#[prop(into)] source: String, children: ChildrenFn) -> impl IntoView {
@@ -92,6 +82,12 @@ pub fn DemoTabs(#[prop(into)] source: String, children: ChildrenFn) -> impl Into
                     <ScrollAreaScrollbar
                         orientation=Orientation::Vertical
                         attr:class="flex w-2.5 touch-none select-none bg-transparent p-0.5 transition-colors"
+                    >
+                        <ScrollAreaThumb attr:class="relative flex-1 rounded-full bg-slate-500 hover:bg-slate-400 transition-colors">" "</ScrollAreaThumb>
+                    </ScrollAreaScrollbar>
+                    <ScrollAreaScrollbar
+                        orientation=Orientation::Horizontal
+                        attr:class="flex h-2.5 touch-none select-none bg-transparent p-0.5 transition-colors"
                     >
                         <ScrollAreaThumb attr:class="relative flex-1 rounded-full bg-slate-500 hover:bg-slate-400 transition-colors">" "</ScrollAreaThumb>
                     </ScrollAreaScrollbar>

@@ -1,4 +1,3 @@
-pub mod demos;
 mod accessible_icon;
 mod accordion;
 mod alert_dialog;

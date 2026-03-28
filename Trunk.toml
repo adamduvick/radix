@@ -13,4 +13,4 @@ wasm_opt = "version_119"
 [[hooks]]
 stage = "pre_build"
 command = "sh"
-command_arguments = ["-c", "npx tailwindcss -i style/input.css -o style/output.css --minify"]
+command_arguments = ["-c", "npx @tailwindcss/cli -i style/input.css -o style/output.css --minify"]
